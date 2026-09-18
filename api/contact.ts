@@ -1,5 +1,9 @@
 import { Resend } from 'resend'
 
+declare const process: {
+  env: Record<string, string | undefined>
+}
+
 // Environment variables:
 // RESEND_API_KEY: your Resend API key (re_...)
 // RESEND_FROM_EMAIL: e.g. "Md. Abdullah <onboarding@resend.dev>" or "Md. Abdullah <contact@yourdomain.com>"
