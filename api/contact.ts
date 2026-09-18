@@ -154,8 +154,9 @@ export default async function handler(req: any, res: any) {
             <p style="color: #64748b; font-size: 13px; margin: 0 0 12px 0;">Full-Stack Software Engineer | CSE, Southeast University</p>
             <div style="font-size: 13px; color: #94a3b8;">
               <span>🌐 WhatsApp: +8801780879898</span> • 
-              <a href="https://github.com/abdullah-cse-seu" style="color: #38bdf8; text-decoration: none; margin-left: 6px;">GitHub</a> • 
-              <a href="https://linkedin.com/in/md-abdullah-seu" style="color: #38bdf8; text-decoration: none; margin-left: 6px;">LinkedIn</a>
+              <a href="https://github.com/abdullahab98" style="color: #38bdf8; text-decoration: none; margin-left: 6px;">GitHub</a> • 
+              <a href="https://gitlab.com/mdabdullah98" style="color: #38bdf8; text-decoration: none; margin-left: 6px;">GitLab</a> • 
+              <a href="https://www.linkedin.com/in/md-abdullah-537b1538a/" style="color: #38bdf8; text-decoration: none; margin-left: 6px;">LinkedIn</a>
             </div>
           </div>
         </div>

@@ -36,7 +36,7 @@ About Md. Abdullah:
 - Contact Details:
   * Email: mdabdullah.ab898@gmail.com
   * Phone/WhatsApp: +8801780879898
-  * Socials: GitHub, GitLab, LinkedIn.
+  * Socials: GitHub (https://github.com/abdullahab98), GitLab (https://gitlab.com/mdabdullah98), LinkedIn (https://www.linkedin.com/in/md-abdullah-537b1538a/).
 
 Instructions:
 - Keep answers concise, clear, polite, and technically accurate.

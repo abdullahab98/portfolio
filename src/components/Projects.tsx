@@ -50,7 +50,7 @@ export function Projects() {
       ],
       architecture:
         'Spring Boot RESTful microservice layer interfacing with MongoDB for fast document retrieval, connected to Groq LPU inference for high-speed clinical prompt evaluation, and rendered via a reactive React interface.',
-      githubUrl: 'https://github.com',
+      githubUrl: 'https://github.com/abdullahab98',
       liveDemoUrl: '#'
     },
     {
@@ -75,7 +75,7 @@ export function Projects() {
       ],
       architecture:
         'JavaFX desktop application integrating native OpenCV C++ bindings through JNI for hardware-accelerated image pipeline, backed by a relational MySQL store with transaction rollback protection.',
-      githubUrl: 'https://github.com',
+      githubUrl: 'https://github.com/abdullahab98',
       liveDemoUrl: '#'
     },
     {
@@ -99,7 +99,7 @@ export function Projects() {
       ],
       architecture:
         'Distributed Node.js micro-utilities utilizing async worker threads, Chrome Extension Manifest V3 background service workers, and streaming I/O pipelines.',
-      githubUrl: 'https://github.com',
+      githubUrl: 'https://github.com/abdullahab98',
       liveDemoUrl: '#'
     }
   ]

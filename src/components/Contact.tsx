@@ -193,7 +193,7 @@ export function Contact() {
             </span>
             <div className="grid grid-cols-3 gap-3">
               <a
-                href="https://github.com"
+                href="https://github.com/abdullahab98"
                 target="_blank"
                 rel="noreferrer"
                 className="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-cyan-400/50 hover:bg-cyan-500/10 transition-all text-slate-300 hover:text-white group"
@@ -203,7 +203,7 @@ export function Contact() {
               </a>
 
               <a
-                href="https://gitlab.com"
+                href="https://gitlab.com/mdabdullah98"
                 target="_blank"
                 rel="noreferrer"
                 className="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-orange-400/50 hover:bg-orange-500/10 transition-all text-slate-300 hover:text-white group"
@@ -213,7 +213,7 @@ export function Contact() {
               </a>
 
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/md-abdullah-537b1538a/"
                 target="_blank"
                 rel="noreferrer"
                 className="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-blue-400/50 hover:bg-blue-500/10 transition-all text-slate-300 hover:text-white group"
