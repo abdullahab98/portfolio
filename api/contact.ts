@@ -52,10 +52,11 @@ export default async function handler(req: any, res: any) {
 
     const tasks: Promise<any>[] = []
 
-    // 2. Google Sheet Entry (async webhook)
+    // 2. Google Sheet Entry & Client Auto-Reply (via Google Apps Script Webhook)
     if (googleSheetUrl) {
       const sheetTask = fetch(googleSheetUrl, {
         method: 'POST',
+        redirect: 'follow',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           name: name.trim(),
@@ -64,9 +65,14 @@ export default async function handler(req: any, res: any) {
           message: message.trim(),
           timestamp: new Date().toISOString()
         })
-      }).catch((err) => {
-        console.error('Failed to log entry into Google Sheet:', err)
       })
+        .then(async (r) => {
+          const text = await r.text()
+          console.log('Google Sheet response status:', r.status, text.slice(0, 100))
+        })
+        .catch((err) => {
+          console.error('Failed to log entry into Google Sheet:', err)
+        })
       tasks.push(sheetTask)
     } else {
       console.warn('GOOGLE_SHEET_WEBHOOK_URL is not set. Skipping sheet log.')
