@@ -224,46 +224,48 @@ export function Skills() {
       : skills.filter((skill) => skill.category === activeTab)
 
   return (
-    <section id="skills" className="relative py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="skills" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Header */}
-      <div className="flex flex-col items-start mb-12">
+      <div className="flex flex-col items-start mb-10 sm:mb-12">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-purple-500/10 border border-purple-500/30 text-purple-400 font-mono text-xs mb-3">
           <BrainCircuit className="w-3.5 h-3.5" />
           <span>// 02. TECHNICAL ARSENAL</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
           Engineering Expertise & Tooling
         </h2>
-        <p className="mt-3 text-slate-400 text-base sm:text-lg max-w-2xl">
+        <p className="mt-3 text-slate-400 text-sm sm:text-base lg:text-lg max-w-2xl">
           An interactive matrix of languages, frameworks, AI capabilities, and architectures with authentic brand tooling.
         </p>
 
         {/* Category Tabs */}
-        <div className="flex flex-wrap gap-2 mt-8 p-1.5 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-md">
-          {categories.map((cat) => (
-            <button
-              key={cat}
-              onClick={() => setActiveTab(cat)}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer ${
-                activeTab === cat
-                  ? 'bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-400/50 text-white shadow-[0_0_20px_rgba(0,240,255,0.25)]'
-                  : 'text-slate-400 hover:text-white hover:bg-white/[0.05] border border-transparent'
-              }`}
-            >
-              {cat}
-            </button>
-          ))}
+        <div className="w-full overflow-x-auto pb-2 sm:pb-0 scrollbar-none mt-6 sm:mt-8">
+          <div className="inline-flex sm:flex sm:flex-wrap gap-1.5 sm:gap-2 p-1.5 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-md min-w-max sm:min-w-0">
+            {categories.map((cat) => (
+              <button
+                key={cat}
+                onClick={() => setActiveTab(cat)}
+                className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer whitespace-nowrap ${
+                  activeTab === cat
+                    ? 'bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-400/50 text-white shadow-[0_0_20px_rgba(0,240,255,0.25)]'
+                    : 'text-slate-400 hover:text-white hover:bg-white/[0.05] border border-transparent'
+                }`}
+              >
+                {cat}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* 3D Interactive Card Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
         {filteredSkills.map((skill) => {
           const Icon = skill.icon
           return (
             <div
               key={skill.name}
-              className="group relative rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/[0.08] p-6 hover:border-cyan-400/60 hover:shadow-[0_10px_30px_-5px_rgba(0,240,255,0.25)] transition-all duration-300 backdrop-blur-xl flex flex-col justify-between hover:-translate-y-1.5"
+              className="group relative rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/[0.08] p-5 sm:p-6 hover:border-cyan-400/60 hover:shadow-[0_10px_30px_-5px_rgba(0,240,255,0.25)] transition-all duration-300 backdrop-blur-xl flex flex-col justify-between hover:-translate-y-1.5"
             >
               {/* Subtle card glow overlay on hover */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500/[0.05] to-purple-500/[0.05] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />

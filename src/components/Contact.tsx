@@ -80,41 +80,42 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="relative py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="contact" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Background ambient light */}
       <div className="absolute bottom-10 left-1/2 -translate-x-1/2 w-[600px] h-[300px] bg-cyan-500/10 rounded-full blur-[140px] pointer-events-none" />
 
       {/* Section Header */}
-      <div className="flex flex-col items-start mb-16">
+      <div className="flex flex-col items-start mb-10 sm:mb-16">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs mb-3">
           <MessageSquare className="w-3.5 h-3.5" />
           <span>// 04. GET IN TOUCH</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
           Let's Build Something Exceptional
         </h2>
-        <p className="mt-3 text-slate-400 text-base sm:text-lg max-w-2xl">
+        <p className="mt-3 text-slate-400 text-sm sm:text-base lg:text-lg max-w-2xl">
           Whether you're looking for a full-stack engineer, discussing a scalable architecture project, or exploring collaboration, my inbox is always open.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
         {/* Left Column: Direct Contact Hub & Socials (5 cols) */}
-        <div className="lg:col-span-5 space-y-6">
+        <div className="lg:col-span-5 space-y-4 sm:space-y-6">
           {/* Email Card */}
-          <div className="p-6 rounded-2xl bg-[#0b0f19]/90 border border-white/[0.08] hover:border-cyan-400/40 backdrop-blur-xl transition-all group">
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:scale-105 transition-transform">
-                  <Mail className="w-6 h-6" />
+          <div className="p-4 sm:p-6 rounded-2xl bg-[#0b0f19]/90 border border-white/[0.08] hover:border-cyan-400/40 backdrop-blur-xl transition-all group">
+            <div className="flex items-center justify-between gap-3 sm:gap-4">
+              <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 group-hover:scale-105 transition-transform shrink-0">
+                  <Mail className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <div>
-                  <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block">
+                <div className="min-w-0 flex-1">
+                  <span className="text-[11px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider block">
                     Direct Email
                   </span>
                   <a
                     href="mailto:mdabdullah.ab898@gmail.com"
-                    className="text-sm sm:text-base font-semibold text-white hover:text-cyan-300 transition-colors"
+                    className="text-xs sm:text-sm md:text-base font-semibold text-white hover:text-cyan-300 transition-colors block truncate"
+                    title="mdabdullah.ab898@gmail.com"
                   >
                     mdabdullah.ab898@gmail.com
                   </a>
@@ -122,7 +123,7 @@ export function Contact() {
               </div>
               <button
                 onClick={() => handleCopy('mdabdullah.ab898@gmail.com', 'email')}
-                className="p-2.5 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-400 hover:text-cyan-400 transition-colors cursor-pointer"
+                className="p-2 sm:p-2.5 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-400 hover:text-cyan-400 transition-colors cursor-pointer shrink-0"
                 title="Copy Email Address"
               >
                 {copiedEmail ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
@@ -136,19 +137,19 @@ export function Contact() {
           </div>
 
           {/* Phone Card */}
-          <div className="p-6 rounded-2xl bg-[#0b0f19]/90 border border-white/[0.08] hover:border-purple-400/40 backdrop-blur-xl transition-all group">
-            <div className="flex items-start justify-between gap-4">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 group-hover:scale-105 transition-transform">
-                  <Phone className="w-6 h-6" />
+          <div className="p-4 sm:p-6 rounded-2xl bg-[#0b0f19]/90 border border-white/[0.08] hover:border-purple-400/40 backdrop-blur-xl transition-all group">
+            <div className="flex items-center justify-between gap-3 sm:gap-4">
+              <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-purple-500/10 border border-purple-500/30 flex items-center justify-center text-purple-400 group-hover:scale-105 transition-transform shrink-0">
+                  <Phone className="w-5 h-5 sm:w-6 sm:h-6" />
                 </div>
-                <div>
-                  <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block">
+                <div className="min-w-0 flex-1">
+                  <span className="text-[11px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider block">
                     Phone & WhatsApp
                   </span>
                   <a
                     href="tel:+8801780879898"
-                    className="text-sm sm:text-base font-semibold text-white hover:text-purple-300 transition-colors font-mono"
+                    className="text-xs sm:text-sm md:text-base font-semibold text-white hover:text-purple-300 transition-colors font-mono block truncate"
                   >
                     +880 1780 879898
                   </a>
@@ -156,7 +157,7 @@ export function Contact() {
               </div>
               <button
                 onClick={() => handleCopy('+8801780879898', 'phone')}
-                className="p-2.5 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-400 hover:text-purple-400 transition-colors cursor-pointer"
+                className="p-2 sm:p-2.5 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-400 hover:text-purple-400 transition-colors cursor-pointer shrink-0"
                 title="Copy Phone Number"
               >
                 {copiedPhone ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
@@ -170,16 +171,16 @@ export function Contact() {
           </div>
 
           {/* Location & Timezone Card */}
-          <div className="p-6 rounded-2xl bg-[#0b0f19]/90 border border-white/[0.08] backdrop-blur-xl">
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
-                <MapPin className="w-6 h-6" />
+          <div className="p-4 sm:p-6 rounded-2xl bg-[#0b0f19]/90 border border-white/[0.08] backdrop-blur-xl">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400 shrink-0">
+                <MapPin className="w-5 h-5 sm:w-6 sm:h-6" />
               </div>
               <div>
-                <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block">
+                <span className="text-[11px] sm:text-xs font-mono text-slate-400 uppercase tracking-wider block">
                   Location & Timezone
                 </span>
-                <span className="text-sm sm:text-base font-semibold text-white">
+                <span className="text-xs sm:text-sm md:text-base font-semibold text-white">
                   Dhaka, Bangladesh (GMT+6)
                 </span>
               </div>
@@ -187,47 +188,47 @@ export function Contact() {
           </div>
 
           {/* Social Profiles Grid */}
-          <div className="p-6 rounded-2xl bg-[#0b0f19]/90 border border-white/[0.08] backdrop-blur-xl">
+          <div className="p-4 sm:p-6 rounded-2xl bg-[#0b0f19]/90 border border-white/[0.08] backdrop-blur-xl">
             <span className="text-xs font-mono text-slate-400 uppercase tracking-wider block mb-4">
               Developer Profiles & Socials
             </span>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-3 gap-2.5 sm:gap-3">
               <a
                 href="https://github.com/abdullahab98"
                 target="_blank"
                 rel="noreferrer"
-                className="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-cyan-400/50 hover:bg-cyan-500/10 transition-all text-slate-300 hover:text-white group"
+                className="flex flex-col items-center justify-center gap-2 p-2.5 sm:p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-cyan-400/50 hover:bg-cyan-500/10 transition-all text-slate-300 hover:text-white group"
               >
                 <GithubIcon className="w-5 h-5 text-cyan-400 group-hover:scale-110 transition-transform" />
-                <span className="text-xs font-medium">GitHub</span>
+                <span className="text-[11px] sm:text-xs font-medium">GitHub</span>
               </a>
 
               <a
                 href="https://gitlab.com/mdabdullah98"
                 target="_blank"
                 rel="noreferrer"
-                className="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-orange-400/50 hover:bg-orange-500/10 transition-all text-slate-300 hover:text-white group"
+                className="flex flex-col items-center justify-center gap-2 p-2.5 sm:p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-orange-400/50 hover:bg-orange-500/10 transition-all text-slate-300 hover:text-white group"
               >
                 <GitlabIcon className="w-5 h-5 text-orange-400 group-hover:scale-110 transition-transform" />
-                <span className="text-xs font-medium">GitLab</span>
+                <span className="text-[11px] sm:text-xs font-medium">GitLab</span>
               </a>
 
               <a
                 href="https://www.linkedin.com/in/md-abdullah-537b1538a/"
                 target="_blank"
                 rel="noreferrer"
-                className="flex flex-col items-center justify-center gap-2 p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-blue-400/50 hover:bg-blue-500/10 transition-all text-slate-300 hover:text-white group"
+                className="flex flex-col items-center justify-center gap-2 p-2.5 sm:p-3 rounded-xl bg-white/[0.03] border border-white/[0.06] hover:border-blue-400/50 hover:bg-blue-500/10 transition-all text-slate-300 hover:text-white group"
               >
                 <LinkedinIcon className="w-5 h-5 text-blue-400 group-hover:scale-110 transition-transform" />
-                <span className="text-xs font-medium">LinkedIn</span>
+                <span className="text-[11px] sm:text-xs font-medium">LinkedIn</span>
               </a>
             </div>
           </div>
         </div>
 
         {/* Right Column: Interactive Stitched Contact Form (7 cols) */}
-        <div className="lg:col-span-7 rounded-3xl bg-[#0b0f19]/95 border border-white/[0.08] p-6 sm:p-8 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] relative">
-          <h3 className="text-2xl font-bold text-white mb-2">
+        <div className="lg:col-span-7 rounded-2xl sm:rounded-3xl bg-[#0b0f19]/95 border border-white/[0.08] p-5 sm:p-8 backdrop-blur-2xl shadow-[0_20px_50px_rgba(0,0,0,0.6)] relative">
+          <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
             Send an Engineering Inquiry
           </h3>
           <p className="text-sm text-slate-400 mb-8">

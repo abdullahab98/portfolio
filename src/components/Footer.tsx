@@ -6,20 +6,20 @@ export function Footer() {
   }
 
   return (
-    <footer className="relative border-t border-white/[0.08] bg-[#07090e] py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+    <footer className="relative border-t border-white/[0.08] bg-[#07090e] py-8 sm:py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-5 sm:gap-6 text-center sm:text-left">
         {/* Left: Brand / Signature */}
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+        <div className="flex flex-col sm:flex-row items-center gap-2.5 sm:gap-3">
+          <div className="w-8 h-8 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 shrink-0">
             <Terminal className="w-4 h-4" />
           </div>
           <div>
-            <span className="font-mono text-sm font-bold text-white tracking-tight flex items-center">
+            <span className="font-mono text-sm font-bold text-white tracking-tight flex items-center justify-center sm:justify-start">
               <span className="text-cyan-400">&lt;</span>
               Md.Abdullah
               <span className="text-cyan-400">/&gt;</span>
             </span>
-            <p className="text-xs text-slate-500 font-mono mt-0.5">
+            <p className="text-[11px] sm:text-xs text-slate-500 font-mono mt-0.5">
               Full-Stack Software Engineer • Dhaka, Bangladesh
             </p>
           </div>

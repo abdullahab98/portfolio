@@ -202,7 +202,7 @@ export function ChatWidget() {
   return (
     <>
       {/* Floating Action Button (FAB) */}
-      <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-3">
         {!isOpen && (
           <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0b0f19]/90 border border-cyan-500/30 text-xs font-mono text-cyan-300 shadow-[0_4px_20px_rgba(0,0,0,0.5)] backdrop-blur-md animate-bounce">
             <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
@@ -213,15 +213,15 @@ export function ChatWidget() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle AI Assistant Chat"
-          className="relative w-14 h-14 rounded-2xl bg-gradient-to-tr from-cyan-500 to-teal-400 text-slate-950 flex items-center justify-center shadow-[0_0_25px_rgba(0,240,255,0.45)] hover:shadow-[0_0_40px_rgba(0,240,255,0.7)] hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer"
+          className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-cyan-500 to-teal-400 text-slate-950 flex items-center justify-center shadow-[0_0_25px_rgba(0,240,255,0.45)] hover:shadow-[0_0_40px_rgba(0,240,255,0.7)] hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer"
         >
           {isOpen ? (
-            <ChevronDown className="w-6 h-6 group-hover:rotate-180 transition-transform duration-300" />
+            <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-180 transition-transform duration-300" />
           ) : (
             <>
-              <Bot className="w-7 h-7" />
-              <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-emerald-400 border-2 border-[#07090e] animate-ping" />
-              <span className="absolute -top-1 -right-1 w-4 h-4 rounded-full bg-emerald-400 border-2 border-[#07090e]" />
+              <Bot className="w-6 h-6 sm:w-7 sm:h-7" />
+              <span className="absolute -top-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-emerald-400 border-2 border-[#07090e] animate-ping" />
+              <span className="absolute -top-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-emerald-400 border-2 border-[#07090e]" />
             </>
           )}
         </button>
@@ -229,7 +229,7 @@ export function ChatWidget() {
 
       {/* Floating Chat Modal Window */}
       {isOpen && (
-        <div className="fixed bottom-24 right-4 sm:right-6 z-50 w-[92vw] sm:w-[400px] h-[540px] max-h-[82vh] rounded-3xl bg-[#090d16]/95 border border-cyan-500/30 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+        <div className="fixed bottom-18 sm:bottom-24 left-3 right-3 sm:left-auto sm:right-6 z-50 sm:w-[400px] h-[520px] max-h-[80vh] rounded-2xl sm:rounded-3xl bg-[#090d16]/95 border border-cyan-500/30 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
           {/* Header */}
           <div className="p-4 bg-gradient-to-r from-cyan-950/40 via-purple-950/20 to-transparent border-b border-white/[0.08] flex items-center justify-between">
             <div className="flex items-center gap-3">

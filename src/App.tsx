@@ -21,7 +21,7 @@ export function App() {
   }, [])
 
   return (
-    <div className="relative min-h-screen bg-[#07090e] text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-200">
+    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-[#07090e] text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-200">
       {/* Interactive 3D WebGL Three.js Scene */}
       <Scene3D />
 

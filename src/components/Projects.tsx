@@ -105,27 +105,27 @@ export function Projects() {
   ]
 
   return (
-    <section id="projects" className="relative py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="projects" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Header */}
-      <div className="flex flex-col items-start mb-16">
+      <div className="flex flex-col items-start mb-10 sm:mb-16">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs mb-3">
           <FolderGit2 className="w-3.5 h-3.5" />
           <span>// 03. FEATURED WORK</span>
         </div>
-        <h2 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
           Production Systems & Engineered Solutions
         </h2>
-        <p className="mt-3 text-slate-400 text-base sm:text-lg max-w-2xl">
+        <p className="mt-3 text-slate-400 text-sm sm:text-base lg:text-lg max-w-2xl">
           Highlighting real-world applications spanning enterprise microservices, computer vision, AI triage, and developer automation.
         </p>
       </div>
 
       {/* Projects 3D Cards Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
         {projects.map((project, idx) => (
           <div
             key={project.id}
-            className="group relative rounded-3xl bg-[#0b0f19]/90 border border-white/[0.08] hover:border-cyan-400/60 p-7 flex flex-col justify-between transition-all duration-300 backdrop-blur-xl hover:shadow-[0_15px_40px_-10px_rgba(0,240,255,0.3)] hover:-translate-y-2 overflow-hidden"
+            className="group relative rounded-2xl sm:rounded-3xl bg-[#0b0f19]/90 border border-white/[0.08] hover:border-cyan-400/60 p-5 sm:p-7 flex flex-col justify-between transition-all duration-300 backdrop-blur-xl hover:shadow-[0_15px_40px_-10px_rgba(0,240,255,0.3)] hover:-translate-y-2 overflow-hidden"
           >
             {/* Ambient Gradient Glow */}
             <div
@@ -202,25 +202,26 @@ export function Projects() {
 
       {/* Interactive Project Architecture Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="relative w-full max-w-3xl rounded-3xl bg-[#0b0f19] border border-cyan-500/40 p-6 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.9)] max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="relative w-full max-w-3xl rounded-2xl sm:rounded-3xl bg-[#0b0f19] border border-cyan-500/40 p-5 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.9)] max-h-[88vh] overflow-y-auto">
             {/* Close Button */}
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-6 right-6 p-2 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-400 hover:text-white transition-colors cursor-pointer"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-400 hover:text-white transition-colors cursor-pointer"
+              aria-label="Close modal"
             >
               <X className="w-5 h-5" />
             </button>
 
             {/* Modal Header */}
-            <div className="pr-12">
-              <span className="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/30 inline-block mb-2">
+            <div className="pr-10 sm:pr-12">
+              <span className="text-[11px] sm:text-xs font-mono text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/30 inline-block mb-2">
                 {selectedProject.category}
               </span>
-              <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+              <h3 className="text-xl sm:text-3xl font-extrabold text-white">
                 {selectedProject.title}
               </h3>
-              <p className="text-sm font-mono text-slate-400 mt-1">
+              <p className="text-xs sm:text-sm font-mono text-slate-400 mt-1">
                 {selectedProject.tagline}
               </p>
             </div>
@@ -230,13 +231,13 @@ export function Projects() {
               <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">
                 System Overview
               </h4>
-              <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
+              <p className="text-xs sm:text-base text-slate-300 leading-relaxed">
                 {selectedProject.description}
               </p>
             </div>
 
             {/* Architecture Details */}
-            <div className="mt-6 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
+            <div className="mt-5 sm:mt-6 p-3.5 sm:p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
               <div className="flex items-center gap-2 text-cyan-400 mb-2">
                 <Cpu className="w-4 h-4" />
                 <h4 className="text-xs font-mono uppercase tracking-wider font-semibold">
@@ -249,13 +250,13 @@ export function Projects() {
             </div>
 
             {/* Key Features */}
-            <div className="mt-6">
+            <div className="mt-5 sm:mt-6">
               <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">
                 Core Capabilities
               </h4>
               <div className="space-y-2">
                 {selectedProject.features.map((feat, idx) => (
-                  <div key={idx} className="flex items-start gap-2 text-sm text-slate-300">
+                  <div key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-300">
                     <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
                     <span>{feat}</span>
                   </div>
@@ -264,11 +265,11 @@ export function Projects() {
             </div>
 
             {/* Engineering Metrics */}
-            <div className="mt-6">
+            <div className="mt-5 sm:mt-6">
               <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">
                 Impact & Performance Metrics
               </h4>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
                 {selectedProject.metrics.map((metric, idx) => (
                   <div
                     key={idx}
@@ -281,11 +282,11 @@ export function Projects() {
             </div>
 
             {/* Tech Stack Pills */}
-            <div className="mt-6 pt-6 border-t border-white/[0.08] flex flex-wrap gap-2">
+            <div className="mt-5 sm:mt-6 pt-5 sm:pt-6 border-t border-white/[0.08] flex flex-wrap gap-1.5 sm:gap-2">
               {selectedProject.techStack.map((tech) => (
                 <span
                   key={tech}
-                  className="text-xs font-mono text-slate-300 bg-white/[0.05] border border-white/[0.1] px-3 py-1 rounded-lg"
+                  className="text-[11px] sm:text-xs font-mono text-slate-300 bg-white/[0.05] border border-white/[0.1] px-2.5 sm:px-3 py-1 rounded-lg"
                 >
                   {tech}
                 </span>
@@ -293,17 +294,17 @@ export function Projects() {
             </div>
 
             {/* Action Buttons */}
-            <div className="mt-8 flex flex-wrap items-center justify-end gap-3">
+            <div className="mt-6 sm:mt-8 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2.5 sm:gap-3">
               <button
                 onClick={() => setSelectedProject(null)}
-                className="px-5 py-2.5 rounded-xl text-xs font-medium text-slate-300 hover:text-white bg-white/[0.05] hover:bg-white/[0.1] transition-all cursor-pointer"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-medium text-slate-300 hover:text-white bg-white/[0.05] hover:bg-white/[0.1] transition-all cursor-pointer text-center"
               >
                 Close View
               </button>
               <a
                 href="#contact"
                 onClick={() => setSelectedProject(null)}
-                className="px-6 py-2.5 rounded-xl text-xs font-semibold text-slate-900 bg-gradient-to-r from-cyan-400 to-teal-300 hover:from-cyan-300 hover:to-teal-200 transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)]"
+                className="w-full sm:w-auto px-6 py-2.5 rounded-xl text-xs font-semibold text-slate-950 bg-gradient-to-r from-cyan-400 to-teal-300 hover:from-cyan-300 hover:to-teal-200 transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)] text-center"
               >
                 Discuss This Project
               </a>

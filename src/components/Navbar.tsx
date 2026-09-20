@@ -29,22 +29,22 @@ export function Navbar() {
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
           <a
             href="#"
             className="flex items-center gap-2 group text-decoration-none"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 border border-cyan-500/40 flex items-center justify-center group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all">
-              <Terminal className="w-5 h-5 text-cyan-400 group-hover:rotate-6 transition-transform" />
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-tr from-cyan-500/20 to-purple-500/20 border border-cyan-500/40 flex items-center justify-center group-hover:border-cyan-400 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.4)] transition-all shrink-0">
+              <Terminal className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 group-hover:rotate-6 transition-transform" />
             </div>
             <div className="flex flex-col">
-              <span className="font-mono text-base font-bold tracking-tight text-white group-hover:text-cyan-400 transition-colors flex items-center">
+              <span className="font-mono text-sm sm:text-base font-bold tracking-tight text-white group-hover:text-cyan-400 transition-colors flex items-center">
                 <span className="text-cyan-400 mr-0.5">&lt;</span>
                 Md.Abdullah
                 <span className="text-cyan-400 ml-0.5">/&gt;</span>
               </span>
-              <span className="text-[10px] text-slate-400 font-mono tracking-wider uppercase">
+              <span className="text-[9px] sm:text-[10px] text-slate-400 font-mono tracking-wider uppercase">
                 Software Engineer
               </span>
             </div>
