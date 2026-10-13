@@ -1,7 +1,18 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @layer base {
   :root {
+    --color-bg-primary: #f8fafc;
+    --color-bg-secondary: #ffffff;
+    --color-accent-cyan: #0284c7;
+    --color-accent-violet: #7c3aed;
+    --color-accent-emerald: #059669;
+    --color-accent-amber: #d97706;
+  }
+
+  :root.dark {
     --color-bg-primary: #07090e;
     --color-bg-secondary: #0d111a;
     --color-accent-cyan: #00f0ff;
@@ -12,10 +23,19 @@
 
   html {
     scroll-behavior: smooth;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+
+  html.dark {
     color-scheme: dark;
     background-color: #07090e;
     color: #e2e8f0;
-    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+
+  html.light {
+    color-scheme: light;
+    background-color: #f8fafc;
+    color: #0f172a;
   }
 
   body {
@@ -23,29 +43,46 @@
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    background-color: #07090e;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  /* Custom Cyber Scrollbar */
-  ::-webkit-scrollbar {
+  /* Custom Cyber Scrollbar (Dark mode) */
+  html.dark ::-webkit-scrollbar {
     width: 8px;
   }
-  ::-webkit-scrollbar-track {
+  html.dark ::-webkit-scrollbar-track {
     background: #090c13;
   }
-  ::-webkit-scrollbar-thumb {
+  html.dark ::-webkit-scrollbar-thumb {
     background: #1e293b;
     border-radius: 4px;
     border: 1px solid rgba(0, 240, 255, 0.2);
   }
-  ::-webkit-scrollbar-thumb:hover {
+  html.dark ::-webkit-scrollbar-thumb:hover {
     background: #00f0ff;
     box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
   }
 
+  /* Custom Clean Scrollbar (Light mode) */
+  html.light ::-webkit-scrollbar {
+    width: 8px;
+  }
+  html.light ::-webkit-scrollbar-track {
+    background: #f1f5f9;
+  }
+  html.light ::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+    border: 1px solid rgba(2, 132, 199, 0.2);
+  }
+  html.light ::-webkit-scrollbar-thumb:hover {
+    background: #0284c7;
+    box-shadow: 0 0 8px rgba(2, 132, 199, 0.3);
+  }
+
   ::selection {
     background: rgba(0, 240, 255, 0.25);
-    color: #ffffff;
+    color: inherit;
   }
 }
 
@@ -73,7 +110,17 @@
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
 
+html.light .cyber-grid {
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+}
+
 .cyber-dots {
   background-image: radial-gradient(rgba(0, 240, 255, 0.12) 1px, transparent 1px);
   background-size: 24px 24px;
+}
+
+html.light .cyber-dots {
+  background-image: radial-gradient(rgba(2, 132, 199, 0.15) 1px, transparent 1px);
 }

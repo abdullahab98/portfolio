@@ -109,7 +109,7 @@ function renderInline(raw: string): React.ReactNode[] {
           href={match[3]}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2 break-all"
+          className="text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 underline underline-offset-2 break-all"
         >
           {cleanSymbols(match[2])}
         </a>
@@ -121,7 +121,7 @@ function renderInline(raw: string): React.ReactNode[] {
           href={fullMatch}
           target="_blank"
           rel="noopener noreferrer"
-          className="text-cyan-400 hover:text-cyan-300 underline underline-offset-2 break-all"
+          className="text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 underline underline-offset-2 break-all"
         >
           {fullMatch}
         </a>
@@ -129,20 +129,20 @@ function renderInline(raw: string): React.ReactNode[] {
     } else if (match[4] || match[5]) {
       const boldText = cleanSymbols(match[4] || match[5] || '')
       nodes.push(
-        <strong key={key} className="font-semibold text-white">
+        <strong key={key} className="font-semibold text-slate-900 dark:text-white">
           {boldText}
         </strong>
       )
     } else if (match[6]) {
       nodes.push(
-        <code key={key} className="px-1 py-0.5 rounded bg-white/10 text-cyan-300 font-mono text-[11px]">
+        <code key={key} className="px-1 py-0.5 rounded bg-slate-200 dark:bg-white/10 text-cyan-700 dark:text-cyan-300 font-mono text-[11px]">
           {match[6]}
         </code>
       )
     } else if (match[7] || match[8]) {
       const italicText = cleanSymbols(match[7] || match[8] || '')
       nodes.push(
-        <span key={key} className="font-medium text-slate-100">
+        <span key={key} className="font-medium text-slate-800 dark:text-slate-100">
           {italicText}
         </span>
       )
@@ -168,7 +168,7 @@ function FormattedMessage({ text, role }: { text: string; role: 'user' | 'model'
   const lines = text.split('\n')
 
   return (
-    <div className="space-y-1.5 leading-relaxed text-slate-200">
+    <div className="space-y-1.5 leading-relaxed text-slate-800 dark:text-slate-200">
       {lines.map((rawLine, idx) => {
         const line = rawLine.trim()
         if (!line) {
@@ -179,7 +179,7 @@ function FormattedMessage({ text, role }: { text: string; role: 'user' | 'model'
         const headerMatch = line.match(/^#{1,4}\s+(.+)$/)
         if (headerMatch) {
           return (
-            <div key={idx} className="font-semibold text-cyan-300 text-xs sm:text-sm mt-2 mb-0.5">
+            <div key={idx} className="font-semibold text-cyan-700 dark:text-cyan-300 text-xs sm:text-sm mt-2 mb-0.5">
               {renderInline(headerMatch[1])}
             </div>
           )
@@ -189,8 +189,8 @@ function FormattedMessage({ text, role }: { text: string; role: 'user' | 'model'
         const bulletMatch = line.match(/^[*•+-]\s+(.+)$/)
         if (bulletMatch) {
           return (
-            <div key={idx} className="flex items-start gap-2 my-0.5 text-slate-200">
-              <span className="text-cyan-400 select-none text-[7px] mt-1.5 shrink-0">●</span>
+            <div key={idx} className="flex items-start gap-2 my-0.5 text-slate-800 dark:text-slate-200">
+              <span className="text-cyan-600 dark:text-cyan-400 select-none text-[7px] mt-1.5 shrink-0">●</span>
               <div className="flex-1">
                 {renderInline(bulletMatch[1])}
               </div>
@@ -202,8 +202,8 @@ function FormattedMessage({ text, role }: { text: string; role: 'user' | 'model'
         const numMatch = line.match(/^(\d+[.)])\s+(.+)$/)
         if (numMatch) {
           return (
-            <div key={idx} className="flex items-start gap-2 my-0.5 text-slate-200">
-              <span className="text-cyan-400 font-mono text-[11px] font-semibold mt-0.5 shrink-0 select-none">
+            <div key={idx} className="flex items-start gap-2 my-0.5 text-slate-800 dark:text-slate-200">
+              <span className="text-cyan-600 dark:text-cyan-400 font-mono text-[11px] font-semibold mt-0.5 shrink-0 select-none">
                 {numMatch[1]}
               </span>
               <div className="flex-1">
@@ -375,8 +375,8 @@ export function ChatWidget() {
       {/* Floating Action Button (FAB) */}
       <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 flex items-center gap-3">
         {!isOpen && (
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#0b0f19]/90 border border-cyan-500/30 text-xs font-mono text-cyan-300 shadow-[0_4px_20px_rgba(0,0,0,0.5)] backdrop-blur-md animate-bounce">
-            <Sparkles className="w-3.5 h-3.5 text-cyan-400" />
+          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/95 dark:bg-[#0b0f19]/90 border border-cyan-500/30 text-xs font-mono text-cyan-700 dark:text-cyan-300 shadow-[0_4px_20px_rgba(0,0,0,0.1)] dark:shadow-[0_4px_20px_rgba(0,0,0,0.5)] backdrop-blur-md animate-bounce">
+            <Sparkles className="w-3.5 h-3.5 text-cyan-500 dark:text-cyan-400" />
             <span>Chat with Stra</span>
           </div>
         )}
@@ -384,15 +384,15 @@ export function ChatWidget() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           aria-label="Toggle Stra AI Chat"
-          className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-cyan-500 to-teal-400 text-slate-950 flex items-center justify-center shadow-[0_0_25px_rgba(0,240,255,0.45)] hover:shadow-[0_0_40px_rgba(0,240,255,0.7)] hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer"
+          className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-gradient-to-tr from-cyan-500 to-teal-400 text-slate-950 flex items-center justify-center shadow-[0_4px_20px_rgba(6,182,212,0.4)] dark:shadow-[0_0_25px_rgba(0,240,255,0.45)] hover:shadow-[0_4px_30px_rgba(6,182,212,0.6)] dark:hover:shadow-[0_0_40px_rgba(0,240,255,0.7)] hover:scale-105 active:scale-95 transition-all duration-300 group cursor-pointer"
         >
           {isOpen ? (
             <ChevronDown className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-180 transition-transform duration-300" />
           ) : (
             <>
               <Bot className="w-6 h-6 sm:w-7 sm:h-7" />
-              <span className="absolute -top-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-emerald-400 border-2 border-[#07090e] animate-ping" />
-              <span className="absolute -top-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-emerald-400 border-2 border-[#07090e]" />
+              <span className="absolute -top-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-emerald-400 border-2 border-white dark:border-[#07090e] animate-ping" />
+              <span className="absolute -top-1 -right-1 w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-full bg-emerald-400 border-2 border-white dark:border-[#07090e]" />
             </>
           )}
         </button>
@@ -400,24 +400,24 @@ export function ChatWidget() {
 
       {/* Floating Chat Modal Window */}
       {isOpen && (
-        <div className="fixed bottom-18 sm:bottom-24 left-3 right-3 sm:left-auto sm:right-6 z-50 sm:w-[400px] h-[520px] max-h-[80vh] rounded-2xl sm:rounded-3xl bg-[#090d16]/95 border border-cyan-500/30 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
+        <div className="fixed bottom-18 sm:bottom-24 left-3 right-3 sm:left-auto sm:right-6 z-50 sm:w-[400px] h-[520px] max-h-[80vh] rounded-2xl sm:rounded-3xl bg-white/95 dark:bg-[#090d16]/95 border border-slate-200 dark:border-cyan-500/30 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.15)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.9)] flex flex-col overflow-hidden animate-in zoom-in-95 duration-200">
           {/* Header */}
-          <div className="p-4 bg-gradient-to-r from-cyan-950/40 via-purple-950/20 to-transparent border-b border-white/[0.08] flex items-center justify-between">
+          <div className="p-4 bg-gradient-to-r from-cyan-50/80 via-purple-50/50 to-transparent dark:from-cyan-950/40 dark:via-purple-950/20 dark:to-transparent border-b border-slate-200 dark:border-white/[0.08] flex items-center justify-between">
             <div className="flex items-center gap-3">
-              <div className="relative w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400">
+              <div className="relative w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400">
                 <Bot className="w-5 h-5" />
-                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-[#090d16]" />
+                <span className="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-white dark:border-[#090d16]" />
               </div>
               <div>
                 <div className="flex items-center gap-1.5">
-                  <h4 className="text-sm font-bold text-white tracking-tight">
+                  <h4 className="text-sm font-bold text-slate-900 dark:text-white tracking-tight">
                     Stra
                   </h4>
-                  <span className="text-[10px] font-mono text-cyan-400 bg-cyan-500/10 px-1.5 py-0.2 rounded border border-cyan-500/20">
+                  <span className="text-[10px] font-mono text-cyan-700 dark:text-cyan-400 bg-cyan-500/10 px-1.5 py-0.2 rounded border border-cyan-500/20">
                     Portfolio AI
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-400 font-mono">
+                <p className="text-[11px] text-slate-500 dark:text-slate-400 font-mono">
                   Online • Abdullah's Assistant
                 </p>
               </div>
@@ -427,14 +427,14 @@ export function ChatWidget() {
               <button
                 onClick={clearChat}
                 title="Clear conversation"
-                className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.06] transition-colors cursor-pointer"
+                className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors cursor-pointer"
               >
                 <Trash2 className="w-4 h-4" />
               </button>
               <button
                 onClick={() => setIsOpen(false)}
                 title="Close chat"
-                className="p-2 rounded-lg text-slate-400 hover:text-white hover:bg-white/[0.06] transition-colors cursor-pointer"
+                className="p-2 rounded-lg text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/[0.06] transition-colors cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -450,7 +450,7 @@ export function ChatWidget() {
                   }`}
               >
                 {msg.role === 'model' && (
-                  <div className="w-7 h-7 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center shrink-0 text-cyan-400 mt-1">
+                  <div className="w-7 h-7 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center shrink-0 text-cyan-600 dark:text-cyan-400 mt-1">
                     <Sparkles className="w-3.5 h-3.5" />
                   </div>
                 )}
@@ -458,12 +458,12 @@ export function ChatWidget() {
                 <div
                   className={`max-w-[85%] px-4 py-2.5 rounded-2xl text-xs sm:text-sm ${msg.role === 'user'
                     ? 'bg-gradient-to-r from-cyan-400 to-teal-300 text-slate-950 font-medium rounded-tr-none shadow-[0_2px_15px_rgba(0,240,255,0.25)]'
-                    : 'bg-white/[0.04] border border-white/[0.08] text-slate-200 rounded-tl-none'
+                    : 'bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] text-slate-800 dark:text-slate-200 rounded-tl-none'
                     }`}
                 >
                   <FormattedMessage text={msg.text} role={msg.role} />
                   <span
-                    className={`block text-[9px] font-mono mt-1 ${msg.role === 'user' ? 'text-slate-800' : 'text-slate-500'
+                    className={`block text-[9px] font-mono mt-1 ${msg.role === 'user' ? 'text-slate-800' : 'text-slate-400 dark:text-slate-500'
                       }`}
                   >
                     {msg.timestamp}
@@ -471,7 +471,7 @@ export function ChatWidget() {
                 </div>
 
                 {msg.role === 'user' && (
-                  <div className="w-7 h-7 rounded-lg bg-teal-400/20 border border-teal-400/30 flex items-center justify-center shrink-0 text-teal-300 mt-1">
+                  <div className="w-7 h-7 rounded-lg bg-teal-400/20 border border-teal-400/30 flex items-center justify-center shrink-0 text-teal-600 dark:text-teal-300 mt-1">
                     <User className="w-3.5 h-3.5" />
                   </div>
                 )}
@@ -479,12 +479,12 @@ export function ChatWidget() {
             ))}
 
             {isLoading && (
-              <div className="flex items-center gap-2 text-slate-400 text-xs font-mono p-2">
-                <div className="w-7 h-7 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-400 animate-pulse">
+              <div className="flex items-center gap-2 text-slate-500 dark:text-slate-400 text-xs font-mono p-2">
+                <div className="w-7 h-7 rounded-lg bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center text-cyan-600 dark:text-cyan-400 animate-pulse">
                   <Bot className="w-3.5 h-3.5" />
                 </div>
-                <div className="flex items-center gap-1.5 bg-white/[0.03] px-3 py-2 rounded-xl border border-white/[0.06]">
-                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+                <div className="flex items-center gap-1.5 bg-slate-100 dark:bg-white/[0.03] px-3 py-2 rounded-xl border border-slate-200 dark:border-white/[0.06]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 animate-ping" />
                   <span>Stra is thinking...</span>
                 </div>
               </div>
@@ -500,7 +500,7 @@ export function ChatWidget() {
                 <button
                   key={prompt}
                   onClick={() => handleSendMessage(prompt)}
-                  className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-white/[0.03] hover:bg-cyan-500/10 border border-white/[0.08] hover:border-cyan-400/40 text-slate-300 hover:text-cyan-300 transition-all cursor-pointer"
+                  className="text-[11px] font-mono px-2.5 py-1 rounded-full bg-slate-100 dark:bg-white/[0.03] hover:bg-cyan-500/10 dark:hover:bg-cyan-500/10 border border-slate-200 dark:border-white/[0.08] hover:border-cyan-400/50 dark:hover:border-cyan-400/40 text-slate-700 dark:text-slate-300 hover:text-cyan-600 dark:hover:text-cyan-300 transition-all cursor-pointer"
                 >
                   {prompt}
                 </button>
@@ -511,7 +511,7 @@ export function ChatWidget() {
           {/* Input Bar */}
           <form
             onSubmit={onSubmit}
-            className="p-3 bg-[#07090e]/90 border-t border-white/[0.08] flex items-center gap-2"
+            className="p-3 bg-slate-50 dark:bg-[#07090e]/90 border-t border-slate-200 dark:border-white/[0.08] flex items-center gap-2"
           >
             <input
               ref={inputRef}
@@ -520,7 +520,7 @@ export function ChatWidget() {
               value={input}
               onChange={(e) => setInput(e.target.value)}
               disabled={isLoading}
-              className="flex-1 px-4 py-2.5 rounded-xl bg-white/[0.03] border border-white/[0.1] text-white placeholder:text-slate-500 text-xs sm:text-sm focus:outline-none focus:border-cyan-400 focus:ring-1 focus:ring-cyan-400 transition-all disabled:opacity-50"
+              className="flex-1 px-4 py-2.5 rounded-xl bg-white dark:bg-white/[0.03] border border-slate-300 dark:border-white/[0.1] text-slate-900 dark:text-white placeholder:text-slate-400 dark:placeholder:text-slate-500 text-xs sm:text-sm focus:outline-none focus:border-cyan-500 dark:focus:border-cyan-400 focus:ring-1 focus:ring-cyan-500 dark:ring-cyan-400 transition-all disabled:opacity-50"
             />
             <button
               type="submit"

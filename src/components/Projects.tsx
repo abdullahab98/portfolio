@@ -108,14 +108,14 @@ export function Projects() {
     <section id="projects" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Header */}
       <div className="flex flex-col items-start mb-10 sm:mb-16">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-600 dark:text-cyan-400 font-mono text-xs mb-3 font-semibold dark:font-normal">
           <FolderGit2 className="w-3.5 h-3.5" />
           <span>// 03. FEATURED WORK</span>
         </div>
-        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight transition-colors">
           Production Systems & Engineered Solutions
         </h2>
-        <p className="mt-3 text-slate-400 text-sm sm:text-base lg:text-lg max-w-2xl">
+        <p className="mt-3 text-slate-600 dark:text-slate-400 text-sm sm:text-base lg:text-lg max-w-2xl transition-colors">
           Highlighting real-world applications spanning enterprise microservices, computer vision, AI triage, and developer automation.
         </p>
       </div>
@@ -125,7 +125,7 @@ export function Projects() {
         {projects.map((project, idx) => (
           <div
             key={project.id}
-            className="group relative rounded-2xl sm:rounded-3xl bg-[#0b0f19]/90 border border-white/[0.08] hover:border-cyan-400/60 p-5 sm:p-7 flex flex-col justify-between transition-all duration-300 backdrop-blur-xl hover:shadow-[0_15px_40px_-10px_rgba(0,240,255,0.3)] hover:-translate-y-2 overflow-hidden"
+            className="group relative rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-[#0b0f19]/90 border border-slate-200/90 dark:border-white/[0.08] hover:border-cyan-500/60 dark:hover:border-cyan-400/60 p-5 sm:p-7 flex flex-col justify-between transition-all duration-300 backdrop-blur-xl shadow-xs hover:shadow-xl dark:hover:shadow-[0_15px_40px_-10px_rgba(0,240,255,0.3)] hover:-translate-y-2 overflow-hidden"
           >
             {/* Ambient Gradient Glow */}
             <div
@@ -135,22 +135,22 @@ export function Projects() {
             <div className="relative z-10">
               {/* Top Meta Bar */}
               <div className="flex items-center justify-between gap-2 mb-4">
-                <span className="text-[11px] font-mono font-medium text-cyan-300 bg-cyan-500/10 border border-cyan-500/20 px-2.5 py-1 rounded-full">
+                <span className="text-[11px] font-mono font-medium text-cyan-700 dark:text-cyan-300 bg-cyan-500/10 border border-cyan-500/20 px-2.5 py-1 rounded-full">
                   {project.category}
                 </span>
-                <span className="text-xs font-mono text-slate-500">0{idx + 1}</span>
+                <span className="text-xs font-mono text-slate-400 dark:text-slate-500">0{idx + 1}</span>
               </div>
 
               {/* Title & Tagline */}
-              <h3 className="text-2xl font-bold text-white group-hover:text-cyan-300 transition-colors">
+              <h3 className="text-2xl font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
                 {project.title}
               </h3>
-              <p className="text-xs font-mono text-cyan-400/90 mt-1 font-medium">
+              <p className="text-xs font-mono text-cyan-600 dark:text-cyan-400/90 mt-1 font-medium">
                 {project.tagline}
               </p>
 
               {/* Short Description */}
-              <p className="text-sm text-slate-300 mt-4 leading-relaxed line-clamp-3">
+              <p className="text-sm text-slate-600 dark:text-slate-300 mt-4 leading-relaxed line-clamp-3">
                 {project.description}
               </p>
 
@@ -159,7 +159,7 @@ export function Projects() {
                 {project.techStack.map((tech) => (
                   <span
                     key={tech}
-                    className="text-[11px] font-mono text-slate-300 bg-white/[0.04] border border-white/[0.08] px-2.5 py-1 rounded-lg"
+                    className="text-[11px] font-mono text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-white/[0.04] border border-slate-200 dark:border-white/[0.08] px-2.5 py-1 rounded-lg"
                   >
                     {tech}
                   </span>
@@ -168,10 +168,10 @@ export function Projects() {
             </div>
 
             {/* Bottom Actions */}
-            <div className="relative z-10 mt-8 pt-6 border-t border-white/[0.06] flex items-center justify-between gap-3">
+            <div className="relative z-10 mt-8 pt-6 border-t border-slate-100 dark:border-white/[0.06] flex items-center justify-between gap-3">
               <button
                 onClick={() => setSelectedProject(project)}
-                className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-400 hover:text-cyan-300 transition-colors group/btn cursor-pointer"
+                className="inline-flex items-center gap-1.5 text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 transition-colors group/btn cursor-pointer"
               >
                 <span>View Architecture</span>
                 <ChevronRight className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
@@ -182,14 +182,14 @@ export function Projects() {
                   href={project.githubUrl}
                   target="_blank"
                   rel="noreferrer"
-                  className="p-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.1] border border-white/[0.08] text-slate-300 hover:text-white transition-all"
+                  className="p-2 rounded-xl bg-slate-100 dark:bg-white/[0.04] hover:bg-slate-200 dark:hover:bg-white/[0.1] border border-slate-200 dark:border-white/[0.08] text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white transition-all shadow-xs"
                   title="Source Code"
                 >
                   <GithubIcon className="w-4 h-4" />
                 </a>
                 <button
                   onClick={() => setSelectedProject(project)}
-                  className="p-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 hover:text-cyan-300 transition-all cursor-pointer"
+                  className="p-2 rounded-xl bg-cyan-500/10 hover:bg-cyan-500/20 border border-cyan-500/30 text-cyan-600 dark:text-cyan-400 hover:text-cyan-700 dark:hover:text-cyan-300 transition-all cursor-pointer shadow-xs"
                   title="Explore Details"
                 >
                   <ExternalLink className="w-4 h-4" />
@@ -202,12 +202,12 @@ export function Projects() {
 
       {/* Interactive Project Architecture Modal */}
       {selectedProject && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="relative w-full max-w-3xl rounded-2xl sm:rounded-3xl bg-[#0b0f19] border border-cyan-500/40 p-5 sm:p-8 shadow-[0_20px_60px_rgba(0,0,0,0.9)] max-h-[88vh] overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/70 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="relative w-full max-w-3xl rounded-2xl sm:rounded-3xl bg-white dark:bg-[#0b0f19] border border-slate-200 dark:border-cyan-500/40 p-5 sm:p-8 shadow-2xl dark:shadow-[0_20px_60px_rgba(0,0,0,0.9)] max-h-[88vh] overflow-y-auto">
             {/* Close Button */}
             <button
               onClick={() => setSelectedProject(null)}
-              className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] text-slate-400 hover:text-white transition-colors cursor-pointer"
+              className="absolute top-4 right-4 sm:top-6 sm:right-6 p-2 rounded-xl bg-slate-100 dark:bg-white/[0.05] hover:bg-slate-200 dark:hover:bg-white/[0.1] text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors cursor-pointer"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -215,49 +215,49 @@ export function Projects() {
 
             {/* Modal Header */}
             <div className="pr-10 sm:pr-12">
-              <span className="text-[11px] sm:text-xs font-mono text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/30 inline-block mb-2">
+              <span className="text-[11px] sm:text-xs font-mono text-cyan-700 dark:text-cyan-400 bg-cyan-500/10 px-3 py-1 rounded-full border border-cyan-500/30 inline-block mb-2 font-medium">
                 {selectedProject.category}
               </span>
-              <h3 className="text-xl sm:text-3xl font-extrabold text-white">
+              <h3 className="text-xl sm:text-3xl font-extrabold text-slate-900 dark:text-white">
                 {selectedProject.title}
               </h3>
-              <p className="text-xs sm:text-sm font-mono text-slate-400 mt-1">
+              <p className="text-xs sm:text-sm font-mono text-slate-500 dark:text-slate-400 mt-1">
                 {selectedProject.tagline}
               </p>
             </div>
 
             {/* Overview */}
             <div className="mt-6">
-              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">
+              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2 font-semibold">
                 System Overview
               </h4>
-              <p className="text-xs sm:text-base text-slate-300 leading-relaxed">
+              <p className="text-xs sm:text-base text-slate-700 dark:text-slate-300 leading-relaxed">
                 {selectedProject.description}
               </p>
             </div>
 
             {/* Architecture Details */}
-            <div className="mt-5 sm:mt-6 p-3.5 sm:p-4 rounded-2xl bg-white/[0.02] border border-white/[0.08]">
-              <div className="flex items-center gap-2 text-cyan-400 mb-2">
+            <div className="mt-5 sm:mt-6 p-3.5 sm:p-4 rounded-2xl bg-slate-50 dark:bg-white/[0.02] border border-slate-200 dark:border-white/[0.08]">
+              <div className="flex items-center gap-2 text-cyan-600 dark:text-cyan-400 mb-2">
                 <Cpu className="w-4 h-4" />
                 <h4 className="text-xs font-mono uppercase tracking-wider font-semibold">
                   Technical Architecture & Dataflow
                 </h4>
               </div>
-              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-mono">
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-mono">
                 {selectedProject.architecture}
               </p>
             </div>
 
             {/* Key Features */}
             <div className="mt-5 sm:mt-6">
-              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">
+              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 font-semibold">
                 Core Capabilities
               </h4>
               <div className="space-y-2">
                 {selectedProject.features.map((feat, idx) => (
-                  <div key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-300">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                  <div key={idx} className="flex items-start gap-2 text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-500 dark:text-emerald-400 shrink-0 mt-0.5" />
                     <span>{feat}</span>
                   </div>
                 ))}
@@ -266,14 +266,14 @@ export function Projects() {
 
             {/* Engineering Metrics */}
             <div className="mt-5 sm:mt-6">
-              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-400 mb-3">
+              <h4 className="text-xs font-mono uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 font-semibold">
                 Impact & Performance Metrics
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5 sm:gap-3">
                 {selectedProject.metrics.map((metric, idx) => (
                   <div
                     key={idx}
-                    className="p-3 rounded-xl bg-cyan-500/[0.04] border border-cyan-500/20 text-xs text-cyan-200 font-mono"
+                    className="p-3 rounded-xl bg-cyan-50 dark:bg-cyan-500/[0.04] border border-cyan-200 dark:border-cyan-500/20 text-xs text-cyan-800 dark:text-cyan-200 font-mono"
                   >
                     {metric}
                   </div>
@@ -282,11 +282,11 @@ export function Projects() {
             </div>
 
             {/* Tech Stack Pills */}
-            <div className="mt-5 sm:mt-6 pt-5 sm:pt-6 border-t border-white/[0.08] flex flex-wrap gap-1.5 sm:gap-2">
+            <div className="mt-5 sm:mt-6 pt-5 sm:pt-6 border-t border-slate-200 dark:border-white/[0.08] flex flex-wrap gap-1.5 sm:gap-2">
               {selectedProject.techStack.map((tech) => (
                 <span
                   key={tech}
-                  className="text-[11px] sm:text-xs font-mono text-slate-300 bg-white/[0.05] border border-white/[0.1] px-2.5 sm:px-3 py-1 rounded-lg"
+                  className="text-[11px] sm:text-xs font-mono text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-white/[0.05] border border-slate-200 dark:border-white/[0.1] px-2.5 sm:px-3 py-1 rounded-lg"
                 >
                   {tech}
                 </span>
@@ -297,14 +297,14 @@ export function Projects() {
             <div className="mt-6 sm:mt-8 flex flex-col-reverse sm:flex-row items-stretch sm:items-center justify-end gap-2.5 sm:gap-3">
               <button
                 onClick={() => setSelectedProject(null)}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-medium text-slate-300 hover:text-white bg-white/[0.05] hover:bg-white/[0.1] transition-all cursor-pointer text-center"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs font-medium text-slate-700 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white bg-slate-100 dark:bg-white/[0.05] hover:bg-slate-200 dark:hover:bg-white/[0.1] transition-all cursor-pointer text-center"
               >
                 Close View
               </button>
               <a
                 href="#contact"
                 onClick={() => setSelectedProject(null)}
-                className="w-full sm:w-auto px-6 py-2.5 rounded-xl text-xs font-semibold text-slate-950 bg-gradient-to-r from-cyan-400 to-teal-300 hover:from-cyan-300 hover:to-teal-200 transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)] text-center"
+                className="w-full sm:w-auto px-6 py-2.5 rounded-xl text-xs font-semibold text-slate-950 bg-gradient-to-r from-cyan-400 to-teal-300 hover:from-cyan-300 hover:to-teal-200 transition-all shadow-[0_0_20px_rgba(0,240,255,0.3)] text-center cursor-pointer"
               >
                 Discuss This Project
               </a>

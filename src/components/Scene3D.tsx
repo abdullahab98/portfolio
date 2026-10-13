@@ -1,8 +1,17 @@
 import { useEffect, useRef } from 'react'
 import * as THREE from 'three'
+import { useTheme } from '../context/ThemeContext'
 
 export function Scene3D() {
   const containerRef = useRef<HTMLDivElement>(null)
+  const { theme } = useTheme()
+  const matsRef = useRef<{
+    particleMaterial: THREE.PointsMaterial
+    icoMat: THREE.MeshBasicMaterial
+    coreMat: THREE.MeshBasicMaterial
+    torusMat: THREE.MeshBasicMaterial
+    octMat: THREE.MeshBasicMaterial
+  } | null>(null)
 
   useEffect(() => {
     if (!containerRef.current) return
@@ -128,6 +137,14 @@ export function Scene3D() {
     octMesh.position.set(-14, 12, -10)
     mainGroup.add(octMesh)
 
+    matsRef.current = {
+      particleMaterial,
+      icoMat,
+      coreMat,
+      torusMat,
+      octMat
+    }
+
     // Interactive mouse coordinates with smooth damping
     let mouseX = 0
     let mouseY = 0
@@ -223,8 +240,39 @@ export function Scene3D() {
       octGeo.dispose()
       octMat.dispose()
       renderer.dispose()
+      matsRef.current = null
     }
   }, [])
+
+  useEffect(() => {
+    if (!matsRef.current) return
+    const { particleMaterial, icoMat, coreMat, torusMat, octMat } = matsRef.current
+    if (theme === 'dark') {
+      particleMaterial.opacity = 0.75
+      particleMaterial.blending = THREE.AdditiveBlending
+      particleMaterial.needsUpdate = true
+      icoMat.color.setHex(0x00f0ff)
+      icoMat.opacity = 0.35
+      coreMat.color.setHex(0x8a2be2)
+      coreMat.opacity = 0.5
+      torusMat.color.setHex(0x38bdf8)
+      torusMat.opacity = 0.25
+      octMat.color.setHex(0xa855f7)
+      octMat.opacity = 0.3
+    } else {
+      particleMaterial.opacity = 0.4
+      particleMaterial.blending = THREE.NormalBlending
+      particleMaterial.needsUpdate = true
+      icoMat.color.setHex(0x0284c7)
+      icoMat.opacity = 0.18
+      coreMat.color.setHex(0x7c3aed)
+      coreMat.opacity = 0.22
+      torusMat.color.setHex(0x0d9488)
+      torusMat.opacity = 0.16
+      octMat.color.setHex(0x6366f1)
+      octMat.opacity = 0.18
+    }
+  }, [theme])
 
   return (
     <div

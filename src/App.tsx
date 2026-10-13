@@ -8,9 +8,12 @@ import { Projects } from './components/Projects'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { ChatWidget } from './components/ChatWidget'
+import { useTheme } from './context/ThemeContext'
 
 export function App() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
+  const { theme } = useTheme()
+  const isDark = theme === 'dark'
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -21,7 +24,7 @@ export function App() {
   }, [])
 
   return (
-    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-[#07090e] text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-200">
+    <div className="relative min-h-screen w-full max-w-full overflow-x-hidden bg-slate-50 dark:bg-[#07090e] text-slate-900 dark:text-slate-100 selection:bg-cyan-500/20 selection:text-cyan-700 dark:selection:text-cyan-200 transition-colors duration-300">
       {/* Interactive 3D WebGL Three.js Scene */}
       <Scene3D />
 
@@ -29,14 +32,16 @@ export function App() {
       <div
         className="pointer-events-none fixed inset-0 z-10 transition-opacity duration-500"
         style={{
-          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, rgba(0, 240, 255, 0.04), transparent 80%)`,
+          background: `radial-gradient(600px circle at ${mousePos.x}px ${mousePos.y}px, ${
+            isDark ? 'rgba(0, 240, 255, 0.04)' : 'rgba(2, 132, 199, 0.06)'
+          }, transparent 80%)`,
         }}
         aria-hidden="true"
       />
 
       {/* Cyber Grid Pattern Background Overlay */}
       <div
-        className="fixed inset-0 pointer-events-none z-0 opacity-25 cyber-grid"
+        className="fixed inset-0 pointer-events-none z-0 opacity-20 dark:opacity-25 cyber-grid"
         aria-hidden="true"
       />
 

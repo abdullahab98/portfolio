@@ -227,28 +227,28 @@ export function Skills() {
     <section id="skills" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Header */}
       <div className="flex flex-col items-start mb-10 sm:mb-12">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-purple-500/10 border border-purple-500/30 text-purple-400 font-mono text-xs mb-3">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-purple-500/10 border border-purple-500/30 text-purple-600 dark:text-purple-400 font-mono text-xs mb-3 font-semibold dark:font-normal">
           <BrainCircuit className="w-3.5 h-3.5" />
           <span>// 02. TECHNICAL ARSENAL</span>
         </div>
-        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">
+        <h2 className="text-2xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight transition-colors">
           Engineering Expertise & Tooling
         </h2>
-        <p className="mt-3 text-slate-400 text-sm sm:text-base lg:text-lg max-w-2xl">
+        <p className="mt-3 text-slate-600 dark:text-slate-400 text-sm sm:text-base lg:text-lg max-w-2xl transition-colors">
           An interactive matrix of languages, frameworks, AI capabilities, and architectures with authentic brand tooling.
         </p>
 
         {/* Category Tabs */}
         <div className="w-full overflow-x-auto pb-2 sm:pb-0 scrollbar-none mt-6 sm:mt-8">
-          <div className="inline-flex sm:flex sm:flex-wrap gap-1.5 sm:gap-2 p-1.5 rounded-2xl bg-white/[0.02] border border-white/[0.08] backdrop-blur-md min-w-max sm:min-w-0">
+          <div className="inline-flex sm:flex sm:flex-wrap gap-1.5 sm:gap-2 p-1.5 rounded-2xl bg-slate-200/50 dark:bg-white/[0.02] border border-slate-300/70 dark:border-white/[0.08] backdrop-blur-md min-w-max sm:min-w-0 shadow-xs">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setActiveTab(cat)}
                 className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer whitespace-nowrap ${
                   activeTab === cat
-                    ? 'bg-gradient-to-r from-cyan-500/20 to-purple-500/20 border border-cyan-400/50 text-white shadow-[0_0_20px_rgba(0,240,255,0.25)]'
-                    : 'text-slate-400 hover:text-white hover:bg-white/[0.05] border border-transparent'
+                    ? 'bg-white dark:bg-gradient-to-r dark:from-cyan-500/20 dark:to-purple-500/20 border border-cyan-500/40 dark:border-cyan-400/50 text-cyan-800 dark:text-white shadow-xs dark:shadow-[0_0_20px_rgba(0,240,255,0.25)] font-semibold'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:bg-white/80 dark:hover:bg-white/[0.05] border border-transparent'
                 }`}
               >
                 {cat}
@@ -265,7 +265,7 @@ export function Skills() {
           return (
             <div
               key={skill.name}
-              className="group relative rounded-2xl bg-gradient-to-b from-white/[0.04] to-white/[0.01] border border-white/[0.08] p-5 sm:p-6 hover:border-cyan-400/60 hover:shadow-[0_10px_30px_-5px_rgba(0,240,255,0.25)] transition-all duration-300 backdrop-blur-xl flex flex-col justify-between hover:-translate-y-1.5"
+              className="group relative rounded-2xl bg-white/85 dark:bg-gradient-to-b dark:from-white/[0.04] dark:to-white/[0.01] border border-slate-200/90 dark:border-white/[0.08] p-5 sm:p-6 hover:border-cyan-500/60 dark:hover:border-cyan-400/60 shadow-xs hover:shadow-lg dark:hover:shadow-[0_10px_30px_-5px_rgba(0,240,255,0.25)] transition-all duration-300 backdrop-blur-xl flex flex-col justify-between hover:-translate-y-1.5"
             >
               {/* Subtle card glow overlay on hover */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500/[0.05] to-purple-500/[0.05] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
@@ -273,39 +273,39 @@ export function Skills() {
               <div>
                 {/* Header: Real Brand Logo + Category Tag */}
                 <div className="flex items-center justify-between gap-3 mb-4">
-                  <div className="w-12 h-12 rounded-xl bg-white/[0.03] border border-white/[0.08] flex items-center justify-center p-2.5 group-hover:scale-110 group-hover:border-cyan-400/50 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all duration-300">
+                  <div className="w-12 h-12 rounded-xl bg-slate-100/90 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] flex items-center justify-center p-2.5 group-hover:scale-110 group-hover:border-cyan-500/50 dark:group-hover:border-cyan-400/50 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.25)] transition-all duration-300">
                     <Icon className="w-full h-full object-contain" />
                   </div>
                   {skill.highlight && (
-                    <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-300 bg-cyan-500/10 border border-cyan-500/20 px-2 py-0.5 rounded-md">
+                    <span className="text-[10px] font-mono uppercase tracking-wider text-cyan-700 dark:text-cyan-300 bg-cyan-500/10 border border-cyan-500/20 px-2 py-0.5 rounded-md font-medium">
                       {skill.highlight}
                     </span>
                   )}
                 </div>
 
                 {/* Skill Name & Category */}
-                <h3 className="text-lg font-bold text-white group-hover:text-cyan-300 transition-colors">
+                <h3 className="text-lg font-bold text-slate-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyan-300 transition-colors">
                   {skill.name}
                 </h3>
-                <span className="text-xs font-mono text-slate-400 block mt-0.5">
+                <span className="text-xs font-mono text-slate-500 dark:text-slate-400 block mt-0.5">
                   {skill.category}
                 </span>
 
                 {/* Description */}
-                <p className="text-xs text-slate-300 mt-3 leading-relaxed">
+                <p className="text-xs text-slate-600 dark:text-slate-300 mt-3 leading-relaxed">
                   {skill.description}
                 </p>
               </div>
 
               {/* Proficiency Gauge */}
-              <div className="mt-6 pt-4 border-t border-white/[0.06]">
+              <div className="mt-6 pt-4 border-t border-slate-100 dark:border-white/[0.06]">
                 <div className="flex items-center justify-between text-xs font-mono mb-1.5">
-                  <span className="text-slate-400">{skill.level}</span>
-                  <span className="text-cyan-400 font-semibold">{skill.proficiency}%</span>
+                  <span className="text-slate-500 dark:text-slate-400">{skill.level}</span>
+                  <span className="text-cyan-600 dark:text-cyan-400 font-semibold">{skill.proficiency}%</span>
                 </div>
-                <div className="w-full h-1.5 rounded-full bg-slate-800/80 overflow-hidden">
+                <div className="w-full h-1.5 rounded-full bg-slate-200 dark:bg-slate-800/80 overflow-hidden">
                   <div
-                    className="h-full rounded-full bg-gradient-to-r from-cyan-400 to-purple-500 group-hover:from-cyan-300 group-hover:to-purple-400 transition-all duration-700"
+                    className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 dark:from-cyan-400 dark:to-purple-500 group-hover:from-cyan-400 group-hover:to-purple-500 transition-all duration-700"
                     style={{ width: `${skill.proficiency}%` }}
                   />
                 </div>
