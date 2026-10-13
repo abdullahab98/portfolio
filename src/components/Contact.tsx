@@ -41,6 +41,19 @@ export function Contact() {
     setIsSubmitting(true)
     setErrorMessage(null)
 
+    // Client-side quick cooldown check (prevents spam clicking)
+    const lastSendKey = 'portfolio_last_contact_ts'
+    const lastSendTs = parseInt(localStorage.getItem(lastSendKey) || '0', 10)
+    const now = Date.now()
+    const cooldownMs = 15 * 1000 // 15 seconds
+
+    if (now - lastSendTs < cooldownMs) {
+      const waitSec = Math.ceil((cooldownMs - (now - lastSendTs)) / 1000)
+      setErrorMessage(`Please wait ${waitSec}s before sending another message.`)
+      setIsSubmitting(false)
+      return
+    }
+
     try {
       const response = await fetch('/api/contact', {
         method: 'POST',
@@ -53,8 +66,14 @@ export function Contact() {
       const result = await response.json().catch(() => ({}))
 
       if (!response.ok) {
+        if (response.status === 429) {
+          throw new Error(result.error || 'Rate limit reached. Please wait a few minutes before trying again.')
+        }
         throw new Error(result.error || 'Failed to dispatch message. Please try again.')
       }
+
+      // Record successful send timestamp for client cooldown
+      localStorage.setItem(lastSendKey, Date.now().toString())
 
       setIsSubmitting(false)
       setSubmitted(true)

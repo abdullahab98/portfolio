@@ -254,9 +254,62 @@ export function ChatWidget() {
     'How can I contact him?'
   ]
 
+  // Rate limiting for chatbot: max 10 messages per 2 minutes, min 2s cooldown
+  const CHAT_RATE_LIMIT_WINDOW_MS = 2 * 60 * 1000
+  const CHAT_MAX_MSGS = 10
+  const CHAT_MIN_COOLDOWN_MS = 2 * 1000
+
   const handleSendMessage = async (userText: string) => {
     const textToSend = userText.trim()
     if (!textToSend || isLoading) return
+
+    // Rate limiting check
+    const now = Date.now()
+    const rateLimitDataRaw = sessionStorage.getItem('stra_chat_ratelimit')
+    let rateData: { timestamps: number[] } = { timestamps: [] }
+    if (rateLimitDataRaw) {
+      try {
+        rateData = JSON.parse(rateLimitDataRaw)
+      } catch {
+        rateData = { timestamps: [] }
+      }
+    }
+
+    // Keep only timestamps within window
+    const recentTimestamps = rateData.timestamps.filter((ts) => now - ts < CHAT_RATE_LIMIT_WINDOW_MS)
+
+    // Cooldown check
+    const lastTimestamp = recentTimestamps[recentTimestamps.length - 1] || 0
+    if (now - lastTimestamp < CHAT_MIN_COOLDOWN_MS) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          role: 'model',
+          text: '⏳ Please wait a moment before sending another message.',
+          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        }
+      ])
+      return
+    }
+
+    // Max message quota check
+    if (recentTimestamps.length >= CHAT_MAX_MSGS) {
+      setMessages((prev) => [
+        ...prev,
+        {
+          id: (Date.now() + 1).toString(),
+          role: 'model',
+          text: '⏳ You have reached the question limit (10 messages per 2 minutes). Please wait a short while before asking again, or email Abdullah directly at mdabdullah.ab898@gmail.com!',
+          timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
+        }
+      ])
+      return
+    }
+
+    // Record this prompt
+    recentTimestamps.push(now)
+    sessionStorage.setItem('stra_chat_ratelimit', JSON.stringify({ timestamps: recentTimestamps }))
 
     const userMessage: Message = {
       id: Date.now().toString(),

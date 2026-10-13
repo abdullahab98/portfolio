@@ -10,6 +10,92 @@ declare const process: {
 // GOOGLE_SHEET_WEBHOOK_URL: Google Apps Script Web App URL to append rows
 const ABDULLAH_EMAIL = 'mdabdullah.ab898@gmail.com'
 
+// In-memory rate limiting map (IP and Email based)
+interface RateLimitEntry {
+  count: number
+  firstRequestTime: number
+  lastRequestTime: number
+}
+
+const rateLimitMap = new Map<string, RateLimitEntry>()
+
+// Clean up stale entries every 10 minutes to prevent memory leak
+const CLEANUP_INTERVAL_MS = 10 * 60 * 1000
+let lastCleanupTime = Date.now()
+
+function cleanupRateLimitMap(windowMs: number) {
+  const now = Date.now()
+  if (now - lastCleanupTime > CLEANUP_INTERVAL_MS) {
+    lastCleanupTime = now
+    for (const [key, entry] of rateLimitMap.entries()) {
+      if (now - entry.lastRequestTime > windowMs) {
+        rateLimitMap.delete(key)
+      }
+    }
+  }
+}
+
+// Rate limit configuration:
+// - Max 3 messages per 15 minutes per IP
+// - Max 3 messages per 15 minutes per Email
+// - Minimum cooldown of 15 seconds between consecutive sends
+const RATE_LIMIT_WINDOW_MS = 15 * 60 * 1000 // 15 minutes
+const MAX_REQUESTS_PER_WINDOW = 3
+const MIN_COOLDOWN_MS = 15 * 1000 // 15 seconds cooldown
+
+function checkRateLimit(key: string): { allowed: boolean; retryAfterSeconds: number; reason?: string } {
+  const now = Date.now()
+  cleanupRateLimitMap(RATE_LIMIT_WINDOW_MS)
+
+  const entry = rateLimitMap.get(key)
+  if (!entry) {
+    rateLimitMap.set(key, {
+      count: 1,
+      firstRequestTime: now,
+      lastRequestTime: now
+    })
+    return { allowed: true, retryAfterSeconds: 0 }
+  }
+
+  // Check cooldown between consecutive requests
+  const elapsedSinceLast = now - entry.lastRequestTime
+  if (elapsedSinceLast < MIN_COOLDOWN_MS) {
+    const waitSec = Math.ceil((MIN_COOLDOWN_MS - elapsedSinceLast) / 1000)
+    return {
+      allowed: false,
+      retryAfterSeconds: waitSec,
+      reason: `Please wait ${waitSec}s before sending another message.`
+    }
+  }
+
+  // If window has passed, reset the bucket
+  if (now - entry.firstRequestTime > RATE_LIMIT_WINDOW_MS) {
+    rateLimitMap.set(key, {
+      count: 1,
+      firstRequestTime: now,
+      lastRequestTime: now
+    })
+    return { allowed: true, retryAfterSeconds: 0 }
+  }
+
+  // If within window, verify count
+  if (entry.count >= MAX_REQUESTS_PER_WINDOW) {
+    const resetTime = entry.firstRequestTime + RATE_LIMIT_WINDOW_MS
+    const waitSec = Math.ceil((resetTime - now) / 1000)
+    const waitMin = Math.ceil(waitSec / 60)
+    return {
+      allowed: false,
+      retryAfterSeconds: waitSec,
+      reason: `Rate limit reached. You can only send ${MAX_REQUESTS_PER_WINDOW} messages every 15 minutes. Please try again in ${waitMin} minute(s).`
+    }
+  }
+
+  // Increment count
+  entry.count += 1
+  entry.lastRequestTime = now
+  return { allowed: true, retryAfterSeconds: 0 }
+}
+
 export default async function handler(req: any, res: any) {
   // Allow CORS for local dev / client requests
   res.setHeader('Access-Control-Allow-Origin', '*')
@@ -44,6 +130,35 @@ export default async function handler(req: any, res: any) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     if (!emailRegex.test(email)) {
       return res.status(400).json({ error: 'Invalid email address.' })
+    }
+
+    // 2. Client IP extraction
+    const forwarded = req.headers?.['x-forwarded-for']
+    const clientIp = (
+      typeof forwarded === 'string'
+        ? forwarded.split(',')[0].trim()
+        : req.socket?.remoteAddress || 'unknown-ip'
+    )
+
+    // Check IP rate limit
+    const ipCheck = checkRateLimit(`ip:${clientIp}`)
+    if (!ipCheck.allowed) {
+      res.setHeader('Retry-After', ipCheck.retryAfterSeconds)
+      return res.status(429).json({
+        error: ipCheck.reason,
+        retryAfter: ipCheck.retryAfterSeconds
+      })
+    }
+
+    // Check Email rate limit
+    const normalizedEmail = email.trim().toLowerCase()
+    const emailCheck = checkRateLimit(`email:${normalizedEmail}`)
+    if (!emailCheck.allowed) {
+      res.setHeader('Retry-After', emailCheck.retryAfterSeconds)
+      return res.status(429).json({
+        error: emailCheck.reason,
+        retryAfter: emailCheck.retryAfterSeconds
+      })
     }
 
     const apiKey = process.env.RESEND_API_KEY
