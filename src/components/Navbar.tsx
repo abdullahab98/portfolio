@@ -79,23 +79,20 @@ export function Navbar() {
           </a>
 
           {/* Desktop Nav Links with Glassmorphism Active Capsule */}
-          <div className="hidden md:flex items-center gap-1.5 bg-slate-200/60 dark:bg-white/[0.04] border border-slate-300/80 dark:border-white/[0.08] rounded-full p-1.5 backdrop-blur-xl shadow-xs">
+          <div className="hidden md:flex items-center gap-1 bg-slate-200/60 dark:bg-white/[0.04] border border-slate-300/80 dark:border-white/[0.08] rounded-full p-1.5 backdrop-blur-xl shadow-xs">
             {navLinks.map((link) => {
               const isActive = activeSection === link.id
               return (
                 <a
                   key={link.name}
                   href={link.href}
-                  className={`relative px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 ${
+                  className={`px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 ${
                     isActive
                       ? 'bg-white/95 dark:bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30 dark:border-cyan-400/50 shadow-[0_2px_15px_rgba(0,240,255,0.25)] dark:shadow-[0_0_20px_rgba(0,240,255,0.35)] backdrop-blur-md'
                       : 'text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/[0.06] border border-transparent'
                   }`}
                 >
-                  {isActive && (
-                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 mr-1.5 animate-pulse" />
-                  )}
-                  <span>{link.name}</span>
+                  {link.name}
                 </a>
               )
             })}
@@ -171,9 +168,6 @@ export function Navbar() {
                   }`}
                 >
                   <span>{link.name}</span>
-                  {isActive && (
-                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400" />
-                  )}
                 </a>
               )
             })}
