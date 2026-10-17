@@ -81,26 +81,51 @@ export function Projects() {
     {
       id: 'smart-parking',
       title: 'Smart Parking Management System',
-      tagline: 'Real-Time Slot Booking & Computer Vision Vehicle Management',
-      category: 'Full-Stack & Computer Vision',
+      tagline: 'Real-Time Slot Booking & Cloud Vehicle Management Platform',
+      category: 'Full-Stack & Cloud Architecture',
       color: 'from-purple-500/20 via-indigo-500/10 to-transparent',
-      techStack: ['Node.js', 'Express.js', 'MongoDB Atlas', 'OpenCV (ANPR)', 'JavaScript', 'JWT Auth', 'SSLCommerz'],
+      techStack: ['Node.js', 'Express.js', 'MongoDB Atlas', 'JavaScript', 'JWT Auth', 'SSLCommerz', 'Mongoose'],
       description:
-        'A comprehensive, automated parking facility management system. Offers real-time slot availability, multi-tier vehicle management (cars, SUVs, bikes), automated tariff computation based on exact duration stamps, and role-based access for Customers, Managers, and Admins alongside OpenCV-powered license plate detection.',
+        'A full-stack, cloud-hosted smart parking reservation platform for booking secure parking spaces by hour or day. Offers live slot availability tracking, vehicle type classification (cars, motorcycles, SUVs), automated duration tariffs, mock payment flow (SSLCommerz-ready), and JWT-based role authentication for Customers, Managers, and Admins.',
       metrics: [
         'Real-time slot availability tracking with zero double-booking',
-        'Sub-400ms barrier validation & automated billing calculation',
+        'Sub-second transactional booking resolution in MongoDB',
         'Multi-tiered role authorization with JWT security'
       ],
       features: [
-        'Real-time slot map showing vacant vs occupied parking bays',
+        'Real-time interactive parking bay map displaying vacant vs occupied slots',
         'Hourly and daily automated tariff computation engine',
-        'SSLCommerz-ready payment checkout integration',
+        'SSLCommerz-ready payment checkout integration with mock testing mode',
         'Customer booking portal and administrative facility management dashboard'
       ],
       architecture:
-        'Node.js & Express RESTful API server connected to MongoDB Atlas, featuring transactional slot reserving, secure JWT authentication, and automated vehicle logging.',
+        'Node.js & Express RESTful API server connected to MongoDB Atlas, featuring transactional slot reserving, secure JWT authentication, and structured schema validations.',
       githubUrl: 'https://github.com/abdullahab98/smart-parking-management-system',
+      liveDemoUrl: '#'
+    },
+    {
+      id: 'parking-system',
+      title: 'Automated ANPR Parking System',
+      tagline: 'Computer Vision ANPR & Automated Slot Allocation',
+      category: 'Computer Vision & IoT',
+      color: 'from-amber-500/20 via-orange-500/10 to-transparent',
+      techStack: ['JavaFX', 'MySQL', 'OpenCV', 'Image Processing', 'Computer Vision', 'JNI'],
+      description:
+        'An intelligent, hardware-accelerated automated parking facility system powered by OpenCV computer vision. Performs Automatic Number Plate Recognition (ANPR) at entry and exit gates to dynamically log vehicles, assign vacant parking slots, and calculate parking fees with zero human intervention.',
+      metrics: [
+        '96%+ plate character recognition accuracy under varied lighting conditions',
+        'Automated gate barrier trigger in under 400ms',
+        'Optimized MySQL relational schema with indexing for fast vehicle search'
+      ],
+      features: [
+        'Real-time video feed capture and license plate localization using OpenCV filters',
+        'Optical character recognition (OCR) and plate string extraction',
+        'Dynamic visual parking lot map with real-time occupied vs vacant slot state',
+        'Automated billing engine computing tariff based on exact duration stamps'
+      ],
+      architecture:
+        'JavaFX desktop application integrating native OpenCV C++ bindings through JNI for hardware-accelerated image pipeline, backed by a relational MySQL store with transaction rollback protection.',
+      githubUrl: 'https://github.com/abdullahab98',
       liveDemoUrl: '#'
     },
     {

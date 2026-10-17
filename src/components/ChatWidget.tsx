@@ -48,9 +48,10 @@ About Md. Abdullah:
   * DevOps & Tools: Git, Linux, Postman, Vercel, Render.
 - Featured Projects:
   1. PulseHR-AI: Enterprise AI-driven office and workforce intelligence system with FastAPI, Angular 17, MongoDB, SQLAlchemy, and Google Gemini AI for burnout detection and dynamic designation-driven RBAC governance. (Backend: https://github.com/abdullahab98/PulseHR-AI, Frontend: https://github.com/abdullahab98/PulseHR-AI-Frontend).
-  2. Smart Parking Management System: Real-time slot booking and vehicle management platform with Node.js, Express, MongoDB Atlas, and OpenCV ANPR license plate detection (https://github.com/abdullahab98/smart-parking-management-system).
-  3. BD Railway Ticket Quick Booker: Productive Chrome Extension for fast Bangladesh Railway ticket searching with full 263-station autocomplete, quick-swap routes, and 1-click query automation (https://github.com/abdullahab98/bd-railway-ticket-chrome-extension).
-  4. Medicalx: AI-driven medical appointment and triage system (Spring Boot, MongoDB, Groq LLM API, React).
+  2. Smart Parking Management System: Full-stack cloud smart parking reservation platform for booking secure parking spaces with Node.js, Express, MongoDB Atlas, and SSLCommerz payment flow (https://github.com/abdullahab98/smart-parking-management-system).
+  3. Automated ANPR Parking System: Hardware-accelerated computer vision parking facility system powered by JavaFX, MySQL, and OpenCV for automated license plate recognition (ANPR) and barrier control (https://github.com/abdullahab98).
+  4. BD Railway Ticket Quick Booker: Productive Chrome Extension for fast Bangladesh Railway ticket searching with full 263-station autocomplete, quick-swap routes, and 1-click query automation (https://github.com/abdullahab98/bd-railway-ticket-chrome-extension).
+  5. Medicalx: AI-driven medical appointment and triage system (Spring Boot, MongoDB, Groq LLM API, React).
 - Contact Details:
   * Email: mdabdullah.ab898@gmail.com
   * Phone/WhatsApp: +8801780879898
