@@ -66,7 +66,7 @@ export function About() {
               <div><span className="text-purple-400">"title"</span>: <span className="text-cyan-300">"Full-Stack Software Engineer"</span>,</div>
               <div><span className="text-purple-400">"location"</span>: <span className="text-cyan-300">"Dhaka, Bangladesh"</span>,</div>
               <div><span className="text-purple-400">"university"</span>: <span className="text-cyan-300">"Southeast University"</span>,</div>
-              <div><span className="text-purple-400">"cgpa"</span>: <span className="text-emerald-400">3.57</span>,</div>
+              <div><span className="text-purple-400">"cgpa"</span>: <span className="text-emerald-400">3.58</span>,</div>
               <div><span className="text-purple-400">"current_role"</span>: <span className="text-cyan-300">"Programming Assistant @ SEU IT Dept"</span>,</div>
               <div><span className="text-purple-400">"active_project"</span>: <span className="text-cyan-300">"University Management System (UMS)"</span>,</div>
               <div>
@@ -131,7 +131,7 @@ export function About() {
                     B.Sc. in Computer Science & Engineering
                   </h3>
                   <span className="text-[11px] sm:text-xs font-mono text-purple-700 dark:text-purple-300 bg-purple-500/10 px-2.5 py-0.5 rounded-full border border-purple-500/20 w-fit font-medium">
-                    CGPA: 3.57
+                    CGPA: 3.58
                   </span>
                 </div>
                 <p className="text-xs sm:text-sm font-medium text-slate-500 dark:text-slate-400 mt-1">

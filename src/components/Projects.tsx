@@ -29,6 +29,31 @@ export function Projects() {
 
   const projects: Project[] = [
     {
+      id: 'pulsehr-ai',
+      title: 'PulseHR-AI',
+      tagline: 'Enterprise AI-Driven Office & Workforce Intelligence System',
+      category: 'Enterprise & AI Systems',
+      color: 'from-blue-600/20 via-cyan-500/10 to-transparent',
+      techStack: ['FastAPI (Python)', 'Angular 17', 'Tailwind CSS', 'MongoDB', 'SQLAlchemy', 'Google Gemini AI', 'Signals'],
+      description:
+        'An enterprise-grade, asynchronous workforce management and ERP ecosystem. Built with an admin-less, designation-driven governance architecture where permissions and access levels are dynamically calculated. Integrated with Google Gemini AI for proactive employee burnout detection, predictive operational telemetry, dynamic hierarchical approvals, automated attendance tracking with overtime calculation, and smart leave management.',
+      metrics: [
+        'Admin-less dynamic RBAC with 25+ functional panels across 10 business domains',
+        'Real-time burnout detection & executive summary generation via Gemini AI',
+        'Sub-second asynchronous request processing with FastAPI & Angular Signals'
+      ],
+      features: [
+        'Designation-Driven Governance: Hierarchical approval escalation chains with auto-timeout safeguards',
+        'Smart Attendance Engine: Automated clock-in/out, live overtime calculation, and late penalty integration',
+        'Leave & Payroll Portals: Visual balance tracking, multi-tier approvals, and dynamic pay-slip generation',
+        'Interactive Frontend: Glassmorphism UI, visual organogram, attendance calendar, and AI Assistant Drawer'
+      ],
+      architecture:
+        'FastAPI asynchronous REST microservice layer backed by SQLAlchemy and MongoDB for multi-branch data isolation, connected to Google Gemini AI API for executive predictive analysis, and presented via a reactive Angular 17 SPA with Signals.',
+      githubUrl: 'https://github.com/abdullahab98/PulseHR-AI',
+      liveDemoUrl: 'https://github.com/abdullahab98/PulseHR-AI-Frontend'
+    },
+    {
       id: 'medicalx',
       title: 'Medicalx',
       tagline: 'AI-Driven Medical Appointment & Triage Ecosystem',
@@ -54,52 +79,53 @@ export function Projects() {
       liveDemoUrl: '#'
     },
     {
-      id: 'parking-system',
-      title: 'Automated Parking Management System',
-      tagline: 'Computer Vision ANPR & Automated Slot Allocation',
-      category: 'Computer Vision & IoT',
+      id: 'smart-parking',
+      title: 'Smart Parking Management System',
+      tagline: 'Real-Time Slot Booking & Computer Vision Vehicle Management',
+      category: 'Full-Stack & Computer Vision',
       color: 'from-purple-500/20 via-indigo-500/10 to-transparent',
-      techStack: ['JavaFX', 'MySQL', 'OpenCV', 'Image Processing', 'Computer Vision'],
+      techStack: ['Node.js', 'Express.js', 'MongoDB Atlas', 'OpenCV (ANPR)', 'JavaScript', 'JWT Auth', 'SSLCommerz'],
       description:
-        'An intelligent, automated parking facility management system powered by OpenCV computer vision. Performs Automatic Number Plate Recognition (ANPR) at entry and exit gates to dynamically log vehicles, assign vacant parking slots, and calculate parking fees with zero human intervention.',
+        'A comprehensive, automated parking facility management system. Offers real-time slot availability, multi-tier vehicle management (cars, SUVs, bikes), automated tariff computation based on exact duration stamps, and role-based access for Customers, Managers, and Admins alongside OpenCV-powered license plate detection.',
       metrics: [
-        '96%+ plate character recognition accuracy under varied lighting conditions',
-        'Automated gate barrier trigger in under 400ms',
-        'Optimized MySQL relational schema with indexing for fast vehicle search'
+        'Real-time slot availability tracking with zero double-booking',
+        'Sub-400ms barrier validation & automated billing calculation',
+        'Multi-tiered role authorization with JWT security'
       ],
       features: [
-        'Real-time video feed capture and license plate localization using OpenCV filters',
-        'Optical character recognition (OCR) and plate string extraction',
-        'Dynamic visual parking lot map with real-time occupied vs vacant slot state',
-        'Automated billing engine computing tariff based on exact duration stamps'
+        'Real-time slot map showing vacant vs occupied parking bays',
+        'Hourly and daily automated tariff computation engine',
+        'SSLCommerz-ready payment checkout integration',
+        'Customer booking portal and administrative facility management dashboard'
       ],
       architecture:
-        'JavaFX desktop application integrating native OpenCV C++ bindings through JNI for hardware-accelerated image pipeline, backed by a relational MySQL store with transaction rollback protection.',
-      githubUrl: 'https://github.com/abdullahab98',
+        'Node.js & Express RESTful API server connected to MongoDB Atlas, featuring transactional slot reserving, secure JWT authentication, and automated vehicle logging.',
+      githubUrl: 'https://github.com/abdullahab98/smart-parking-management-system',
       liveDemoUrl: '#'
     },
     {
-      id: 'systems-automation',
-      title: 'Systems Automation & Developer Tools',
-      tagline: 'High-Throughput Utilities Suite for Modern Engineering',
-      category: 'Developer Tooling & Infrastructure',
+      id: 'bd-railway-ticket',
+      title: 'BD Railway Ticket Quick Booker',
+      tagline: 'Instant Station Autocomplete & Automated Route Preset Extension',
+      category: 'Browser Extensions & Automation',
       color: 'from-emerald-500/20 via-teal-500/10 to-transparent',
-      techStack: ['Node.js', 'Chrome Extension API', 'Puppeteer', 'TypeScript', 'CLI'],
+      techStack: ['Chrome Extension API (MV3)', 'JavaScript', 'DOM Automation', 'Regex', 'CSS3'],
       description:
-        'A comprehensive developer productivity suite built to streamline everyday development hurdles. Combines a browser-based HTTP API Tracker, a live-state Reloader extension that preserves form states across code edits, and a high-performance headless batch HTML-to-PDF engine.',
+        'A productivity-focused Chrome Extension designed for seamless ticket booking on the official Bangladesh Railway portal (eticket.railway.gov.bd). Features full autocomplete across all 263 official stations, quick-swap routes, dynamic travel date calculation (+1 to +10 advance days), and 1-click query generation to bypass high-traffic booking friction.',
       metrics: [
-        'Zero lost form state during hot module reloads',
-        '50+ concurrent document batch rendering without memory leaks',
-        'Lightweight background footprint (<15MB RAM usage)'
+        'Covers all 263 official Bangladesh Railway stations with instant search',
+        'Saves up to 80% time during morning high-traffic ticket release windows',
+        'Zero external dependencies with lightweight background MV3 footprint'
       ],
       features: [
-        'Browser-based API Tracker: Intercepts, decodes, and benchmarks active network payloads in real-time',
-        'Live-State Reloader: Chrome extension that persists form inputs, local tokens, and DOM positions during HMR',
-        'Batch HTML-to-PDF Engine: Node.js worker pool converting dynamic HTML templates to print-ready PDF invoices'
+        'Full 263-station autocomplete dropdown with highlighted Top Cities',
+        '1-Click quick travel date buttons (Today, +1, +2, +3, +7, and +10 days advance)',
+        'Full 10 official seat class selectors (AC Berth, Snigdha, Shovon, etc.)',
+        'Instant route swap (⇅) and 1-click deep link dispatch to search results'
       ],
       architecture:
-        'Distributed Node.js micro-utilities utilizing async worker threads, Chrome Extension Manifest V3 background service workers, and streaming I/O pipelines.',
-      githubUrl: 'https://github.com/abdullahab98',
+        'Manifest V3 Chrome Extension utilizing isolated content scripts, chrome.storage API for caching user preferences, and real-time DOM injection to automate railway query parameters.',
+      githubUrl: 'https://github.com/abdullahab98/bd-railway-ticket-chrome-extension',
       liveDemoUrl: '#'
     }
   ]
@@ -121,7 +147,7 @@ export function Projects() {
       </div>
 
       {/* Projects 3D Cards Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
         {projects.map((project, idx) => (
           <div
             key={project.id}

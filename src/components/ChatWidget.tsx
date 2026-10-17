@@ -39,7 +39,7 @@ Strict Scope & Boundary (MANDATORY):
 About Md. Abdullah:
 - Role: Full-Stack Software Engineer.
 - Location: Dhaka, Bangladesh (GMT+6).
-- Education: Studying Computer Science & Engineering at Southeast University (Current CGPA: 3.57).
+- Education: Studying Computer Science & Engineering at Southeast University (Current CGPA: 3.58).
 - Professional Experience: Working as a Programming Assistant at the Southeast University IT Department, developing production modules for the University Management System (UMS) used by thousands of students and faculty.
 - Core Skills:
   * Backend & Architecture: Python, FastAPI, Java (Spring Boot), Node.js, Microservices, RESTful APIs, JWT Security.
@@ -47,9 +47,10 @@ About Md. Abdullah:
   * Data & AI: MongoDB, Groq API (LLM Integration), OpenCV (Computer Vision).
   * DevOps & Tools: Git, Linux, Postman, Vercel, Render.
 - Featured Projects:
-  1. Medicalx: AI-driven medical appointment and triage system (Spring Boot, MongoDB, Groq LLM API, React).
-  2. Parking Management System: Computer vision automated slot booking with JavaFX, MySQL, and OpenCV for vehicle license plate detection (ANPR).
-  3. Systems Automation & Tools: Browser API Tracker, Live-state Reloader extension, and Node.js HTML-to-PDF batch converter.
+  1. PulseHR-AI: Enterprise AI-driven office and workforce intelligence system with FastAPI, Angular 17, MongoDB, SQLAlchemy, and Google Gemini AI for burnout detection and dynamic designation-driven RBAC governance. (Backend: https://github.com/abdullahab98/PulseHR-AI, Frontend: https://github.com/abdullahab98/PulseHR-AI-Frontend).
+  2. Smart Parking Management System: Real-time slot booking and vehicle management platform with Node.js, Express, MongoDB Atlas, and OpenCV ANPR license plate detection (https://github.com/abdullahab98/smart-parking-management-system).
+  3. BD Railway Ticket Quick Booker: Productive Chrome Extension for fast Bangladesh Railway ticket searching with full 263-station autocomplete, quick-swap routes, and 1-click query automation (https://github.com/abdullahab98/bd-railway-ticket-chrome-extension).
+  4. Medicalx: AI-driven medical appointment and triage system (Spring Boot, MongoDB, Groq LLM API, React).
 - Contact Details:
   * Email: mdabdullah.ab898@gmail.com
   * Phone/WhatsApp: +8801780879898

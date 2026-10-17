@@ -75,7 +75,7 @@ export function Hero() {
               </span>
             </div>
             <div className="text-sm font-semibold text-slate-900 dark:text-white">Southeast University</div>
-            <div className="text-xs text-cyan-600 dark:text-cyan-300 font-mono mt-0.5 font-medium">CGPA: 3.57</div>
+            <div className="text-xs text-cyan-600 dark:text-cyan-300 font-mono mt-0.5 font-medium">CGPA: 3.58</div>
           </div>
 
           <div className="p-4 rounded-2xl bg-white/80 dark:bg-white/[0.02] border border-slate-200/90 dark:border-white/[0.06] backdrop-blur-md hover:border-cyan-500/40 hover:bg-white dark:hover:bg-white/[0.04] transition-all group shadow-xs">
