@@ -26,13 +26,23 @@ interface Project {
 
 export function Projects() {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+  const [activeTab, setActiveTab] = useState<string>('All')
 
-  const projects: Project[] = [
+  const filterTabs = [
+    { label: 'All', value: 'All' },
+    { label: 'AI & Enterprise', value: 'AI & Enterprise' },
+    { label: 'Full-Stack', value: 'Full-Stack' },
+    { label: 'Computer Vision', value: 'Computer Vision' },
+    { label: 'Extensions', value: 'Extensions' }
+  ]
+
+  const projects: (Project & { filterGroup: string })[] = [
     {
       id: 'pulsehr-ai',
       title: 'PulseHR-AI',
       tagline: 'Enterprise AI-Driven Office & Workforce Intelligence System',
       category: 'Enterprise & AI Systems',
+      filterGroup: 'AI & Enterprise',
       color: 'from-blue-600/20 via-cyan-500/10 to-transparent',
       techStack: ['FastAPI (Python)', 'Angular 17', 'Tailwind CSS', 'MongoDB', 'SQLAlchemy', 'Google Gemini AI', 'Signals'],
       description:
@@ -58,6 +68,7 @@ export function Projects() {
       title: 'Medicalx',
       tagline: 'AI-Driven Medical Appointment & Triage Ecosystem',
       category: 'Healthcare & AI Systems',
+      filterGroup: 'AI & Enterprise',
       color: 'from-cyan-500/20 via-blue-500/10 to-transparent',
       techStack: ['Java (Spring Boot)', 'MongoDB', 'Groq API (LLM)', 'React', 'JWT Auth', 'Tailwind CSS'],
       description:
@@ -83,6 +94,7 @@ export function Projects() {
       title: 'Smart Parking Management System',
       tagline: 'Real-Time Slot Booking & Cloud Vehicle Management Platform',
       category: 'Full-Stack & Cloud Architecture',
+      filterGroup: 'Full-Stack',
       color: 'from-purple-500/20 via-indigo-500/10 to-transparent',
       techStack: ['Node.js', 'Express.js', 'MongoDB Atlas', 'JavaScript', 'JWT Auth', 'SSLCommerz', 'Mongoose'],
       description:
@@ -108,6 +120,7 @@ export function Projects() {
       title: 'Automated ANPR Parking System',
       tagline: 'Computer Vision ANPR & Automated Slot Allocation',
       category: 'Computer Vision & IoT',
+      filterGroup: 'Computer Vision',
       color: 'from-amber-500/20 via-orange-500/10 to-transparent',
       techStack: ['JavaFX', 'MySQL', 'OpenCV', 'Image Processing', 'Computer Vision', 'JNI'],
       description:
@@ -133,6 +146,7 @@ export function Projects() {
       title: 'BD Railway Ticket Quick Booker',
       tagline: 'Instant Station Autocomplete & Automated Route Preset Extension',
       category: 'Browser Extensions & Automation',
+      filterGroup: 'Extensions',
       color: 'from-emerald-500/20 via-teal-500/10 to-transparent',
       techStack: ['Chrome Extension API (MV3)', 'JavaScript', 'DOM Automation', 'Regex', 'CSS3'],
       description:
@@ -155,10 +169,14 @@ export function Projects() {
     }
   ]
 
+  const filteredProjects = activeTab === 'All'
+    ? projects
+    : projects.filter((p) => p.filterGroup === activeTab)
+
   return (
     <section id="projects" className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       {/* Section Header */}
-      <div className="flex flex-col items-start mb-10 sm:mb-16">
+      <div className="flex flex-col items-start mb-8 sm:mb-12">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-cyan-500/10 border border-cyan-500/30 text-cyan-600 dark:text-cyan-400 font-mono text-xs mb-3 font-semibold dark:font-normal">
           <FolderGit2 className="w-3.5 h-3.5" />
           <span>// 03. FEATURED WORK</span>
@@ -169,11 +187,31 @@ export function Projects() {
         <p className="mt-3 text-slate-600 dark:text-slate-400 text-sm sm:text-base lg:text-lg max-w-2xl transition-colors">
           Highlighting real-world applications spanning enterprise microservices, computer vision, AI triage, and developer automation.
         </p>
+
+        {/* Category Filter Tabs */}
+        <div className="flex flex-wrap items-center gap-2 mt-8 p-1.5 rounded-2xl bg-slate-100/80 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08] backdrop-blur-md">
+          {filterTabs.map((tab) => {
+            const isActive = activeTab === tab.value
+            return (
+              <button
+                key={tab.value}
+                onClick={() => setActiveTab(tab.value)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-mono transition-all duration-200 cursor-pointer ${
+                  isActive
+                    ? 'bg-cyan-500 text-slate-950 font-bold shadow-[0_0_15px_rgba(0,240,255,0.4)]'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-200/60 dark:hover:bg-white/[0.05]'
+                }`}
+              >
+                {tab.label}
+              </button>
+            )
+          })}
+        </div>
       </div>
 
       {/* Projects 3D Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
-        {projects.map((project, idx) => (
+        {filteredProjects.map((project, idx) => (
           <div
             key={project.id}
             className="group relative rounded-2xl sm:rounded-3xl bg-white/90 dark:bg-[#0b0f19]/90 border border-slate-200/90 dark:border-white/[0.08] hover:border-cyan-500/60 dark:hover:border-cyan-400/60 p-5 sm:p-7 flex flex-col justify-between transition-all duration-300 backdrop-blur-xl shadow-xs hover:shadow-xl dark:hover:shadow-[0_15px_40px_-10px_rgba(0,240,255,0.3)] hover:-translate-y-2 overflow-hidden"

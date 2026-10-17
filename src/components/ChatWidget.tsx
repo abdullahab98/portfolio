@@ -251,8 +251,10 @@ export function ChatWidget() {
 
   const quickPrompts = [
     'Tell me about Abdullah',
-    "What's his core tech stack?",
+    'What makes Abdullah unique?',
+    'Explain PulseHR-AI Architecture',
     'Experience at SEU IT Dept',
+    "What's his core tech stack?",
     'How can I contact him?'
   ]
 

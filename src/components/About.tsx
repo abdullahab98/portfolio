@@ -7,7 +7,8 @@ import {
   Check,
   Code2,
   Sparkles,
-  Layers
+  Layers,
+  Database
 } from 'lucide-react'
 
 export function About() {
@@ -93,8 +94,8 @@ export function About() {
 
         {/* Right Column: Narrative & Experience Highlights (7 cols) */}
         <div className="lg:col-span-7 space-y-5 sm:space-y-6">
-          {/* Experience Highlight: Southeast University IT Department */}
-          <div className="p-4 sm:p-6 rounded-2xl bg-white/80 dark:bg-white/[0.02] border border-slate-200/90 dark:border-cyan-500/20 backdrop-blur-xl relative group hover:border-cyan-500/50 dark:hover:border-cyan-400/50 transition-all shadow-xs">
+          {/* Experience Highlight: Southeast University IT Department & UMS Architecture Showcase */}
+          <div className="p-4 sm:p-6 rounded-2xl bg-white/80 dark:bg-white/[0.02] border border-slate-200/90 dark:border-cyan-500/30 backdrop-blur-xl relative group hover:border-cyan-500/60 dark:hover:border-cyan-400/60 transition-all shadow-xs">
             <div className="flex flex-col sm:flex-row items-start gap-4">
               <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center shrink-0 text-cyan-600 dark:text-cyan-400 group-hover:scale-105 transition-transform">
                 <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" />
@@ -115,6 +116,32 @@ export function About() {
                   Directly involved in engineering and maintaining high-throughput modules for the university's core{' '}
                   <strong className="text-slate-900 dark:text-white">University Management System (UMS)</strong>. Collaborating with senior IT staff to design secure database schemas, automate academic workflows, optimize REST API response times, and build resilient services that serve thousands of active campus users.
                 </p>
+
+                {/* UMS Architecture & Module Engineering Showcase */}
+                <div className="mt-4 p-3.5 rounded-xl bg-slate-100/90 dark:bg-white/[0.03] border border-slate-200 dark:border-white/[0.08]">
+                  <div className="flex items-center gap-2 mb-2 text-cyan-700 dark:text-cyan-300 font-mono text-xs font-semibold">
+                    <Database className="w-3.5 h-3.5" />
+                    <span>UMS ARCHITECTURE & KEY MODULES</span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] font-mono text-slate-700 dark:text-slate-300">
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-500" />
+                      <span>Academic & Registration Workflows</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                      <span>Grade Reporting & Faculty Portals</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-purple-500" />
+                      <span>Role-Based Access Control (RBAC)</span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                      <span>High-Concurrency Query Optimization</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -69,7 +69,28 @@ export default defineConfig(({ mode }) => {
   Object.assign(process.env, env)
 
   return {
-    plugins: [react(), tailwindcss(), contactApiPlugin()]
+    plugins: [react(), tailwindcss(), contactApiPlugin()],
+    build: {
+      chunkSizeWarningLimit: 600,
+      rollupOptions: {
+        output: {
+          manualChunks(id) {
+            if (id.includes('node_modules/three')) {
+              return 'three-vendor'
+            }
+            if (id.includes('node_modules/lucide-react')) {
+              return 'lucide-vendor'
+            }
+            if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+              return 'react-vendor'
+            }
+            if (id.includes('node_modules/canvas-confetti')) {
+              return 'confetti-vendor'
+            }
+          }
+        }
+      }
+    }
   }
 })
 

@@ -20,14 +20,23 @@ export function Scene3D() {
     const width = container.clientWidth
     const height = container.clientHeight
 
+    // Mobile and GPU optimization detection
+    const isMobile = width < 768 || window.matchMedia('(pointer: coarse)').matches
+    const particleCount = isMobile ? 320 : 750 // Reduced particles on mobile for 60fps performance
+    const maxPixelRatio = isMobile ? 1.5 : 2.0
+
     // Scene, Camera, Renderer
     const scene = new THREE.Scene()
     const camera = new THREE.PerspectiveCamera(60, width / height, 0.1, 1000)
-    camera.position.z = 30
+    camera.position.z = isMobile ? 34 : 30
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true })
+    const renderer = new THREE.WebGLRenderer({
+      antialias: !isMobile, // Disable heavy MSAA on mobile devices
+      alpha: true,
+      powerPreference: 'high-performance'
+    })
     renderer.setSize(width, height)
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, maxPixelRatio))
     container.appendChild(renderer.domElement)
 
     // Group for mouse parallax
@@ -35,7 +44,6 @@ export function Scene3D() {
     scene.add(mainGroup)
 
     // 1. Cyber Particles Constellation
-    const particleCount = 750
     const geometry = new THREE.BufferGeometry()
     const positions = new Float32Array(particleCount * 3)
     const colors = new Float32Array(particleCount * 3)
