@@ -5,6 +5,7 @@ import { ThemeToggle } from './ThemeToggle'
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [activeSection, setActiveSection] = useState<string>('')
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,11 +15,37 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  // Track active section via IntersectionObserver
+  useEffect(() => {
+    const sectionIds = ['home', 'about', 'skills', 'projects', 'contact']
+    const handleIntersection: IntersectionObserverCallback = (entries) => {
+      // Find the entry that has the highest intersection ratio or is currently intersecting
+      const visibleEntries = entries.filter((entry) => entry.isIntersecting)
+      if (visibleEntries.length > 0) {
+        // Pick the top visible section
+        visibleEntries.sort((a, b) => b.intersectionRatio - a.intersectionRatio)
+        setActiveSection(visibleEntries[0].target.id)
+      }
+    }
+
+    const observer = new IntersectionObserver(handleIntersection, {
+      rootMargin: '-20% 0px -50% 0px',
+      threshold: [0.1, 0.3, 0.6]
+    })
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id)
+      if (element) observer.observe(element)
+    })
+
+    return () => observer.disconnect()
+  }, [])
+
   const navLinks = [
-    { name: 'About', href: '#about' },
-    { name: 'Skills', href: '#skills' },
-    { name: 'Projects', href: '#projects' },
-    { name: 'Contact', href: '#contact' },
+    { name: 'About', href: '#about', id: 'about' },
+    { name: 'Skills', href: '#skills', id: 'skills' },
+    { name: 'Projects', href: '#projects', id: 'projects' },
+    { name: 'Contact', href: '#contact', id: 'contact' },
   ]
 
   return (
@@ -51,17 +78,27 @@ export function Navbar() {
             </div>
           </a>
 
-          {/* Desktop Nav Links */}
-          <div className="hidden md:flex items-center gap-1 bg-slate-200/50 dark:bg-white/[0.03] border border-slate-300/70 dark:border-white/[0.08] rounded-full px-4 py-1.5 backdrop-blur-md shadow-xs">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className="px-4 py-1.5 rounded-full text-xs font-medium text-slate-600 dark:text-slate-300 hover:text-slate-950 dark:hover:text-white hover:bg-white/80 dark:hover:bg-white/[0.08] hover:shadow-xs dark:hover:shadow-[0_0_12px_rgba(0,240,255,0.2)] transition-all"
-              >
-                {link.name}
-              </a>
-            ))}
+          {/* Desktop Nav Links with Glassmorphism Active Capsule */}
+          <div className="hidden md:flex items-center gap-1.5 bg-slate-200/60 dark:bg-white/[0.04] border border-slate-300/80 dark:border-white/[0.08] rounded-full p-1.5 backdrop-blur-xl shadow-xs">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  className={`relative px-4 py-1.5 rounded-full text-xs font-semibold transition-all duration-300 ${
+                    isActive
+                      ? 'bg-white/95 dark:bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border border-cyan-500/30 dark:border-cyan-400/50 shadow-[0_2px_15px_rgba(0,240,255,0.25)] dark:shadow-[0_0_20px_rgba(0,240,255,0.35)] backdrop-blur-md'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:bg-white/60 dark:hover:bg-white/[0.06] border border-transparent'
+                  }`}
+                >
+                  {isActive && (
+                    <span className="inline-block w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 mr-1.5 animate-pulse" />
+                  )}
+                  <span>{link.name}</span>
+                </a>
+              )
+            })}
           </div>
 
           {/* Right Action & Theme Toggle & Status Pill */}
@@ -119,17 +156,27 @@ export function Navbar() {
             <ThemeToggle />
           </div>
 
-          <div className="flex flex-col space-y-3 pt-2">
-            {navLinks.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 text-base font-medium py-2 border-b border-slate-200/60 dark:border-white/[0.04]"
-              >
-                {link.name}
-              </a>
-            ))}
+          <div className="flex flex-col space-y-1.5 pt-2">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id
+              return (
+                <a
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`flex items-center justify-between text-base font-medium py-2.5 px-3 rounded-xl transition-all ${
+                    isActive
+                      ? 'bg-cyan-500/10 text-cyan-700 dark:text-cyan-300 border border-cyan-500/20 font-semibold'
+                      : 'text-slate-700 dark:text-slate-200 hover:text-cyan-600 dark:hover:text-cyan-400 hover:bg-slate-100 dark:hover:bg-white/[0.04]'
+                  }`}
+                >
+                  <span>{link.name}</span>
+                  {isActive && (
+                    <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400" />
+                  )}
+                </a>
+              )
+            })}
           </div>
 
           <div className="pt-2">
