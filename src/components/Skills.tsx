@@ -240,20 +240,23 @@ export function Skills() {
 
         {/* Category Tabs */}
         <div className="w-full overflow-x-auto pb-2 sm:pb-0 scrollbar-none mt-6 sm:mt-8">
-          <div className="inline-flex sm:flex sm:flex-wrap gap-1.5 sm:gap-2 p-1.5 rounded-2xl bg-slate-200/50 dark:bg-white/[0.02] border border-slate-300/70 dark:border-white/[0.08] backdrop-blur-md min-w-max sm:min-w-0 shadow-xs">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveTab(cat)}
-                className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer whitespace-nowrap ${
-                  activeTab === cat
-                    ? 'bg-white dark:bg-gradient-to-r dark:from-cyan-500/20 dark:to-purple-500/20 border border-cyan-500/40 dark:border-cyan-400/50 text-cyan-800 dark:text-white shadow-xs dark:shadow-[0_0_20px_rgba(0,240,255,0.25)] font-semibold'
-                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:bg-white/80 dark:hover:bg-white/[0.05] border border-transparent'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
+          <div className="inline-flex sm:flex sm:flex-wrap gap-1.5 sm:gap-2 p-1.5 rounded-2xl bg-slate-200/80 dark:bg-[#0b0f19]/90 border border-slate-300/80 dark:border-white/[0.08] backdrop-blur-md min-w-max sm:min-w-0 shadow-xs">
+            {categories.map((cat) => {
+              const isActive = activeTab === cat
+              return (
+                <button
+                  key={cat}
+                  onClick={() => setActiveTab(cat)}
+                  className={`px-3.5 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 cursor-pointer whitespace-nowrap ${
+                    isActive
+                      ? 'bg-cyan-500 text-slate-950 font-bold shadow-[0_0_15px_rgba(0,240,255,0.4)] border border-cyan-400'
+                      : 'text-slate-600 dark:text-slate-400 hover:text-slate-950 dark:hover:text-white hover:bg-slate-300/50 dark:hover:bg-white/[0.05] border border-transparent'
+                  }`}
+                >
+                  {cat}
+                </button>
+              )
+            })}
           </div>
         </div>
       </div>
