@@ -265,7 +265,7 @@ export function Skills() {
           return (
             <div
               key={skill.name}
-              className="group relative rounded-2xl bg-white/85 dark:bg-gradient-to-b dark:from-white/[0.04] dark:to-white/[0.01] border border-slate-200/90 dark:border-white/[0.08] p-5 sm:p-6 hover:border-cyan-500/60 dark:hover:border-cyan-400/60 shadow-xs hover:shadow-lg dark:hover:shadow-[0_10px_30px_-5px_rgba(0,240,255,0.25)] transition-all duration-300 backdrop-blur-xl flex flex-col justify-between hover:-translate-y-1.5"
+              className="group relative rounded-2xl bg-white/90 dark:bg-[#0b0f19]/90 border border-slate-200/90 dark:border-white/[0.08] p-5 sm:p-6 hover:border-cyan-500/60 dark:hover:border-cyan-400/60 shadow-xs hover:shadow-lg dark:hover:shadow-[0_10px_30px_-5px_rgba(0,240,255,0.25)] transition-all duration-300 backdrop-blur-xl flex flex-col justify-between hover:-translate-y-1.5"
             >
               {/* Subtle card glow overlay on hover */}
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500/[0.05] to-purple-500/[0.05] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
