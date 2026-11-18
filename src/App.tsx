@@ -5,6 +5,7 @@ import { Hero } from './components/Hero'
 import { About } from './components/About'
 import { Skills } from './components/Skills'
 import { Projects } from './components/Projects'
+import { Publications } from './components/Publications'
 import { Contact } from './components/Contact'
 import { Footer } from './components/Footer'
 import { ChatWidget } from './components/ChatWidget'
@@ -70,6 +71,12 @@ export function App() {
           </div>
 
           <Projects />
+
+          <div className="w-full max-w-7xl mx-auto px-4">
+            <div className="h-px bg-gradient-to-r from-transparent via-cyan-500/20 to-transparent" />
+          </div>
+
+          <Publications />
 
           <div className="w-full max-w-7xl mx-auto px-4">
             <div className="h-px bg-gradient-to-r from-transparent via-purple-500/20 to-transparent" />

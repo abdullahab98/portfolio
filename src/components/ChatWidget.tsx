@@ -52,6 +52,8 @@ About Md. Abdullah:
   3. Automated ANPR Parking System: Hardware-accelerated computer vision parking facility system powered by JavaFX, MySQL, and OpenCV for automated license plate recognition (ANPR) and barrier control (https://github.com/abdullahab98).
   4. BD Railway Ticket Quick Booker: Productive Chrome Extension for fast Bangladesh Railway ticket searching with full 263-station autocomplete, quick-swap routes, and 1-click query automation (https://github.com/abdullahab98/bd-railway-ticket-chrome-extension).
   5. Medicalx: AI-driven medical appointment and triage system (Spring Boot, MongoDB, Groq LLM API, React).
+- Research & Publications:
+  1. BDryFish (Data in Brief, Elsevier, 2026): "BDryFish: A smartphone image dataset of dried fish (Shutki) trade categories from Bangladeshi markets" (DOI: https://doi.org/10.1016/j.dib.2026.113359). A 5,778-image computer vision dataset covering 22 dried fish trade categories across Karwan Bazar and Rayerbazar Shutki Arot in Dhaka (2,981 Single, 2,797 Bulk), released at full resolution and 640px with session-aware split metadata.
 - Contact Details:
   * Email: mdabdullah.ab898@gmail.com
   * Phone/WhatsApp: +8801780879898

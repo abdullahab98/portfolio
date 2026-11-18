@@ -17,7 +17,7 @@ export function Navbar() {
 
   // Track active section via IntersectionObserver
   useEffect(() => {
-    const sectionIds = ['home', 'about', 'skills', 'projects', 'contact']
+    const sectionIds = ['home', 'about', 'skills', 'projects', 'publications', 'contact']
     const handleIntersection: IntersectionObserverCallback = (entries) => {
       // Find the entry that has the highest intersection ratio or is currently intersecting
       const visibleEntries = entries.filter((entry) => entry.isIntersecting)
@@ -45,6 +45,7 @@ export function Navbar() {
     { name: 'About', href: '#about', id: 'about' },
     { name: 'Skills', href: '#skills', id: 'skills' },
     { name: 'Projects', href: '#projects', id: 'projects' },
+    { name: 'Publications', href: '#publications', id: 'publications' },
     { name: 'Contact', href: '#contact', id: 'contact' },
   ]
 
